@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -36,7 +36,10 @@ interface Statistic {
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent {
+export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('timelineSection') timelineSection!: ElementRef;
+  
+  private observer!: IntersectionObserver;
   teamMembers: TeamMember[] = [
     {
       name: 'Marie Dubois',
@@ -166,4 +169,48 @@ export class AboutComponent {
       icon: '🤝'
     }
   ];
+
+  ngOnInit() {
+    // Initialisation
+  }
+
+  ngAfterViewInit() {
+    this.setupTimelineAnimations();
+  }
+
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
+  private setupTimelineAnimations() {
+    const options = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animer la section timeline
+          const timelineItems = entry.target.querySelectorAll('.timeline-item');
+          
+          timelineItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add('animate-in');
+            }, index * 200); // Délai progressif pour chaque élément
+          });
+
+          // Arrêter d'observer après l'animation
+          this.observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    // Observer la section timeline
+    if (this.timelineSection?.nativeElement) {
+      this.observer.observe(this.timelineSection.nativeElement);
+    }
+  }
 }

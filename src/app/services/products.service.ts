@@ -258,6 +258,58 @@ export class ProductsService {
         tags: ['soin', 'bio', 'hydratant', 'corps'],
         createdAt: new Date('2024-01-20'),
         updatedAt: new Date('2024-01-20')
+      },
+      {
+        id: '7',
+        name: 'Gigoteuse 4 Saisons Premium',
+        category: 'Vêtements',
+        categoryId: 'clothing',
+        availability: 'in_stock',
+        badge: 'bestseller',
+        price: 49.99,
+        features: ['4 saisons', 'Tissu respirant', 'Fermeture éclair', 'Lavable machine'],
+        rating: 4.9,
+        reviewCount: 187,
+        description: 'Gigoteuse premium 4 saisons pour un sommeil confortable de votre bébé. Tissu respirant et fermeture éclair pratique.',
+        shortDescription: 'Gigoteuse premium 4 saisons',
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ],
+        sizes: ['0-3M', '3-6M', '6-9M', '9-12M'],
+        colors: ['Bleu ciel', 'Rose poudré', 'Vert menthe'],
+        material: 'Coton bio + mousse',
+        brand: 'BabyAnnr',
+        ageRange: '0-12 mois',
+        tags: ['gigoteuse', '4 saisons', 'premium', 'sommeil'],
+        createdAt: new Date('2023-07-15'),
+        updatedAt: new Date('2024-01-15')
+      },
+      {
+        id: '8',
+        name: 'ahmed',
+        category: 'Vêtements',
+        categoryId: 'clothing',
+        availability: 'in_stock',
+        badge: 'new',
+        price: 49.99,
+        features: ['4 saisons', 'Tissu respirant', 'Fermeture éclair', 'Lavable machine'],
+        rating: 4.9,
+        reviewCount: 187,
+        description: 'Gigoteuse premium 4 saisons pour un sommeil confortable de votre bébé. Tissu respirant et fermeture éclair pratique.',
+        shortDescription: 'Gigoteuse premium 4 saisons',
+        image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+        images: [
+          'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ],
+        sizes: ['0-3M', '3-6M', '6-9M', '9-12M'],
+        colors: ['Bleu ciel', 'Rose poudré', 'Vert menthe'],
+        material: 'Coton bio + mousse',
+        brand: 'BabyAnnr',
+        ageRange: '0-12 mois',
+        tags: ['gigoteuse', '4 saisons', 'premium', 'sommeil'],
+        createdAt: new Date('2023-07-15'),
+        updatedAt: new Date('2024-01-15')
       }
     ];
 

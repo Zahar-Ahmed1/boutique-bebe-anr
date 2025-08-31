@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card" [ngClass]="cardClass">
   <!-- Badge -->
   <div class="badge-container" *ngIf="product.badge || product.discountPercentage">
     <span *ngIf="product.badge === 'new'" class="badge badge-new">Nouveau</span>

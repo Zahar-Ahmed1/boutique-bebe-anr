@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class BestsellerCardComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
+  @Input() cardClass: string = '';
   
   isFavorite = false;
   isInCart = false;

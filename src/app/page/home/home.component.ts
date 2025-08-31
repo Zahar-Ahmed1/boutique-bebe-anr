@@ -49,13 +49,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.subscription.add(
-      this.productsService.getBestsellerProducts().subscribe(products => {
+      this.productsService.getBestsellerProducts(5).subscribe(products => {
         this.bestsellerProducts = products;
       })
     );
 
     this.subscription.add(
-      this.productsService.getNewProducts().subscribe(products => {
+      this.productsService.getNewProducts(6).subscribe(products => {
         this.newProducts = products;
       })
     );
