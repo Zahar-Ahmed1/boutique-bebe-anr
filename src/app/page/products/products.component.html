@@ -1,0 +1,315 @@
+<app-header></app-header>
+<div class="products-page">
+  <div class="container-custom">
+    <!-- En-tête de la page -->
+    <div class="page-header">
+      <h1 class="page-title">Nos <span class="text-gradient">Produits</span></h1>
+      <p class="page-description">
+        Découvrez notre sélection de produits de qualité pour vos enfants, 
+        soigneusement choisis pour leur sécurité et leur confort.
+      </p>
+    </div>
+
+    <!-- Barre de recherche et filtres principaux -->
+    <div class="search-filters-section">
+      <!-- Barre de recherche -->
+      <div class="search-section">
+        <div class="search-container">
+          <input 
+            type="text" 
+            [(ngModel)]="searchQuery"
+            (input)="onSearch()"
+            placeholder="Rechercher un produit..."
+            class="search-input-products"
+          >
+          <button (click)="onSearch()" class="search-btn-products">
+            <svg class="search-icon-products" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtres par catégorie -->
+      <div class="category-filters">
+        <button 
+          *ngFor="let category of categories"
+          (click)="selectedCategory = category.id"
+          class="category-filter-btn"
+          [class.category-filter-active]="selectedCategory === category.id"
+        >
+          {{ category.name }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Bouton mobile pour ouvrir les filtres -->
+    <div class="mobile-filter-toggle">
+      <button (click)="toggleMobileFilter()" class="mobile-filter-btn">
+        <svg class="filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+        </svg>
+        Filtres
+        <span *ngIf="activeFiltersCount > 0" class="filter-count">{{ activeFiltersCount }}</span>
+      </button>
+    </div>
+
+    <!-- Contenu principal avec filtres et produits -->
+    <div class="products-main-content">
+      <!-- Panneau de filtres avancés -->
+      <aside class="filters-sidebar" [class.filters-open]="isFilterPanelOpen">
+        <div class="filters-header">
+          <h3 class="filters-title">Filtres</h3>
+          <button (click)="toggleFilterPanel()" class="filters-toggle-btn">
+            <svg class="toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="filters-content">
+          <!-- Filtre par prix -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Prix</h4>
+            <div class="price-range">
+              <div class="price-inputs">
+                <div class="price-input-group">
+                  <label class="price-label">Min</label>
+                  <div class="price-input-wrapper">
+                    <input 
+                      type="number" 
+                      [(ngModel)]="priceRange.min" 
+                      [min]="minProductPrice"
+                      [max]="priceRange.max"
+                      placeholder="0"
+                      class="price-input"
+                    >
+                    <span class="price-currency">€</span>
+                  </div>
+                </div>
+                <span class="price-separator">à</span>
+                <div class="price-input-group">
+                  <label class="price-label">Max</label>
+                  <div class="price-input-wrapper">
+                    <input 
+                      type="number" 
+                      [(ngModel)]="priceRange.max" 
+                      [min]="priceRange.min"
+                      [max]="maxProductPrice"
+                      placeholder="100"
+                      class="price-input"
+                    >
+                    <span class="price-currency">€</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Slider de prix -->
+              <div class="price-slider-container">
+                <div class="price-slider-labels">
+                  <span class="price-slider-min">{{ minProductPrice }}€</span>
+                  <span class="price-slider-max">{{ maxProductPrice }}€</span>
+                </div>
+                <div class="price-slider">
+                  <input 
+                    type="range" 
+                    [min]="minProductPrice" 
+                    [max]="maxProductPrice" 
+                    [(ngModel)]="priceRange.min"
+                    class="range-slider range-slider-min"
+                  >
+                  <input 
+                    type="range" 
+                    [min]="minProductPrice" 
+                    [max]="maxProductPrice" 
+                    [(ngModel)]="priceRange.max"
+                    class="range-slider range-slider-max"
+                  >
+                </div>
+                <div class="price-slider-track"></div>
+              </div>
+              
+              <!-- Affichage des prix sélectionnés -->
+              <div class="price-display">
+                <span class="price-range-text">
+                  {{ priceRange.min }}€ - {{ priceRange.max }}€
+                </span>
+                <button 
+                  (click)="resetPriceRange()" 
+                  class="price-reset-btn"
+                  *ngIf="priceRange.min !== minProductPrice || priceRange.max !== maxProductPrice"
+                >
+                  Réinitialiser
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtre par note -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Note minimum</h4>
+            <div class="rating-filter">
+              <div class="rating-options">
+                <button 
+                  *ngFor="let rating of [4, 3, 2, 1]"
+                  (click)="selectedRating = selectedRating === rating ? 0 : rating"
+                  class="rating-option"
+                  [class.rating-selected]="selectedRating === rating"
+                >
+                  <span class="rating-stars">
+                    <span *ngFor="let star of [1,2,3,4,5]" 
+                          [class.star-filled]="star <= rating"
+                          [class.star-empty]="star > rating">
+                      ★
+                    </span>
+                  </span>
+                  <span class="rating-text">+{{ rating }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Filtre par tranche d'âge -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Tranche d'âge</h4>
+            <div class="filter-options">
+              <button 
+                *ngFor="let age of ageRanges"
+                (click)="selectedAgeRange = selectedAgeRange === age ? '' : age"
+                class="filter-option"
+                [class.filter-option-selected]="selectedAgeRange === age"
+              >
+                {{ age }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtre par marque -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Marque</h4>
+            <div class="filter-options">
+              <button 
+                *ngFor="let brand of brands"
+                (click)="selectedBrand = selectedBrand === brand ? '' : brand"
+                class="filter-option"
+                [class.filter-option-selected]="selectedBrand === brand"
+              >
+                {{ brand }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Filtre par couleur -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Couleur</h4>
+            <div class="color-filter">
+              <button 
+                *ngFor="let color of colors"
+                (click)="selectedColor = selectedColor === color ? '' : color"
+                class="color-option"
+                [class.color-option-selected]="selectedColor === color"
+                [style.background-color]="getColorValue(color)"
+                [title]="color"
+              ></button>
+            </div>
+          </div>
+
+          <!-- Filtres rapides -->
+          <div class="filter-section">
+            <h4 class="filter-section-title">Options rapides</h4>
+            <div class="quick-filters">
+              <label class="checkbox-filter">
+                <input type="checkbox" [(ngModel)]="inStockOnly">
+                <span class="checkmark"></span>
+                En stock uniquement
+              </label>
+              <label class="checkbox-filter">
+                <input type="checkbox" [(ngModel)]="showNewOnly">
+                <span class="checkmark"></span>
+                Nouveautés
+              </label>
+              <label class="checkbox-filter">
+                <input type="checkbox" [(ngModel)]="showDiscountOnly">
+                <span class="checkmark"></span>
+                En promotion
+              </label>
+            </div>
+          </div>
+
+          <!-- Bouton réinitialiser -->
+          <div class="filter-actions">
+            <button (click)="clearAllFilters()" class="clear-filters-btn">
+              Réinitialiser les filtres
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Section des produits -->
+      <main class="products-main">
+        <!-- Résultats de la recherche -->
+        <div class="search-results" *ngIf="searchQuery.trim() || activeFiltersCount > 0">
+          <div class="results-info">
+            <span class="results-text">
+              {{ filteredProducts.length }} produit(s) trouvé(s)
+              <span *ngIf="selectedCategory !== 'all'" class="category-name">
+                dans la catégorie "{{ getCategoryName(selectedCategory) }}"
+              </span>
+              <span *ngIf="searchQuery.trim()" class="search-term">
+                pour "{{ searchQuery }}"
+              </span>
+            </span>
+            <button (click)="clearAllFilters()" class="clear-filters-link">
+              Effacer tous les filtres
+            </button>
+          </div>
+        </div>
+
+        <!-- Grille des produits -->
+        <div *ngIf="filteredProducts.length > 0" class="products-grid-container">
+          <div class="products-grid">
+            <app-bestseller-card
+              *ngFor="let product of filteredProducts"
+              [product]="product"
+            ></app-bestseller-card>
+          </div>
+        </div>
+
+        <!-- Message si aucun produit trouvé -->
+        <div *ngIf="filteredProducts.length === 0" class="no-products">
+          <div class="no-products-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.47-.881-6.08-2.33"></path>
+            </svg>
+          </div>
+          <h3 class="no-products-title">Aucun produit trouvé</h3>
+          <p class="no-products-description">
+            Essayez de modifier vos critères de recherche ou de sélectionner une autre catégorie.
+          </p>
+          <button (click)="clearAllFilters()" class="reset-filters-btn">
+            Voir tous les produits
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay mobile pour les filtres -->
+<div class="mobile-filter-overlay" [class.overlay-open]="isMobileFilterOpen">
+  <div class="mobile-filter-panel">
+    <div class="mobile-filter-header">
+      <h3 class="mobile-filter-title">Filtres</h3>
+      <button (click)="toggleMobileFilter()" class="mobile-filter-close">
+        <svg class="close-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-filter-content">
+      <!-- Contenu des filtres mobile (copié du sidebar) -->
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

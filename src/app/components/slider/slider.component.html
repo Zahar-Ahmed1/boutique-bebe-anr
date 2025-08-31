@@ -1,0 +1,90 @@
+<section class="slider-container">
+  <!-- Slides -->
+  <div class="relative h-full">
+    <div 
+      *ngFor="let slide of slides; let i = index" 
+      class="slide"
+      [class.active]="i === currentSlide"
+      [class.inactive]="i !== currentSlide"
+    >
+      <!-- Image de fond -->
+      <div 
+        class="slide-bg"
+        [style.background-image]="'url(' + slide.image + ')'"
+      ></div>
+      
+      <!-- Overlay sombre -->
+      <div class="slide-overlay"></div>
+      
+      <!-- Contenu du slide -->
+      <div class="slide-content">
+        <div class="slide-text">
+          <h2 class="slide-title">
+            {{ slide.title }}
+          </h2>
+          <p class="slide-subtitle">
+            {{ slide.subtitle }}
+          </p>
+          <div class="pt-4">
+            <a 
+              [routerLink]="slide.ctaLink"
+              class="btn-primary"
+            >
+              {{ slide.ctaText }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation précédent/suivant -->
+  <button 
+    (click)="previousSlide()"
+    (mouseenter)="pauseAutoSlide()"
+    (mouseleave)="resumeAutoSlide()"
+    class="slider-nav prev"
+    aria-label="Slide précédent"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <button 
+    (click)="nextSlide()"
+    (mouseenter)="pauseAutoSlide()"
+    (mouseleave)="resumeAutoSlide()"
+    class="slider-nav next"
+    aria-label="Slide suivant"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Indicateurs de slide -->
+  <div class="slider-indicators">
+    <button 
+      *ngFor="let slide of slides; let i = index"
+      (click)="goToSlide(i)"
+      (mouseenter)="pauseAutoSlide()"
+      (mouseleave)="resumeAutoSlide()"
+      class="slider-indicator"
+      [class.active]="i === currentSlide"
+      [attr.aria-label]="'Aller au slide ' + (i + 1)"
+    ></button>
+  </div>
+
+  <!-- Contrôles de pause/play -->
+  <button 
+    (click)="pauseAutoSlide()"
+    (mouseenter)="pauseAutoSlide()"
+    class="slider-controls"
+    aria-label="Pause"
+  >
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+  </button>
+</section>

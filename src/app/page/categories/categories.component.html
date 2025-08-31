@@ -1,0 +1,122 @@
+<app-header></app-header>
+<div class="categories-page">
+  <div class="container-custom">
+    <!-- En-tête de la page -->
+    <div class="page-header">
+      <h1 class="page-title">Nos <span class="text-gradient">Catégories</span></h1>
+      <p class="page-description">
+        Explorez nos différentes catégories de produits pour trouver exactement ce dont votre enfant a besoin
+      </p>
+    </div>
+
+    <!-- Catégories mises en avant -->
+    <div class="featured-categories-section">
+      <h2 class="section-title">Catégories <span class="text-gradient">Populaires</span></h2>
+      <div class="featured-categories-grid">
+        <div 
+          *ngFor="let category of featuredCategories" 
+          class="featured-category-card"
+          [routerLink]="['/products']"
+          [queryParams]="{category: category.id}"
+        >
+          <div class="featured-category-image-container">
+            <img 
+              [src]="category.image" 
+              [alt]="category.name"
+              class="featured-category-image"
+            >
+            
+            <!-- Overlay -->
+            <div class="featured-category-overlay"></div>
+            
+            <!-- Contenu -->
+            <div class="featured-category-content">
+              <div class="featured-category-header">
+                <h3 class="featured-category-title">{{ category.name }}</h3>
+                <span class="featured-category-badge">
+                  {{ category.productCount }} produits
+                </span>
+              </div>
+              
+              <p class="featured-category-description">
+                {{ category.description }}
+              </p>
+              
+              <div class="featured-category-footer">
+                <span *ngIf="category.ageRange" class="age-range-badge">
+                  {{ category.ageRange }}
+                </span>
+                <span class="discover-link">
+                  Découvrir →
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toutes les catégories -->
+    <div class="all-categories-section">
+      <h2 class="section-title">Toutes les <span class="text-gradient">Catégories</span></h2>
+      <div class="categories-grid">
+        <div 
+          *ngFor="let category of regularCategories" 
+          class="category-card"
+          [routerLink]="['/products']"
+          [queryParams]="{category: category.id}"
+        >
+          <div class="category-card-container">
+            <div class="category-image-container">
+              <img 
+                [src]="category.image" 
+                [alt]="category.name"
+                class="category-image"
+              >
+              
+              <!-- Badge produit count -->
+              <div class="product-count-badge">
+                {{ category.productCount }}
+              </div>
+            </div>
+            
+            <div class="category-card-content">
+              <h3 class="category-card-title">
+                {{ category.name }}
+              </h3>
+              
+              <p class="category-card-description">
+                {{ category.description }}
+              </p>
+              
+              <div class="category-card-footer">
+                <span *ngIf="category.ageRange" class="age-range-badge-small">
+                  {{ category.ageRange }}
+                </span>
+                <span class="explore-link">
+                  Explorer
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="cta-section">
+      <div class="cta-container">
+        <h3 class="cta-title">
+          Besoin d'aide pour choisir ?
+        </h3>
+        <p class="cta-description">
+          Notre équipe d'experts est là pour vous conseiller et vous aider à trouver les meilleurs produits pour votre enfant.
+        </p>
+        <a routerLink="/contact" class="cta-button">
+          Nous contacter
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,192 @@
+<app-header></app-header>
+<div class="contact-page">
+  <div class="container-custom">
+    <!-- En-tête de la page -->
+    <div class="page-header">
+      <h1 class="page-title">Nous <span class="text-gradient">Contacter</span></h1>
+      <p class="page-description">
+        Une question ? Un conseil ? N'hésitez pas à nous contacter, notre équipe est là pour vous aider !
+      </p>
+    </div>
+
+    <div class="contact-content">
+      <!-- Formulaire de contact -->
+      <div class="contact-form-section">
+        <h2 class="section-title">
+          Envoyez-nous un message
+        </h2>
+
+        <form (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">
+                Nom complet *
+              </label>
+              <input 
+                type="text" 
+                id="name"
+                [(ngModel)]="contactForm.name"
+                name="name"
+                required
+                class="form-input"
+                placeholder="Votre nom complet"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">
+                Email *
+              </label>
+              <input 
+                type="email" 
+                id="email"
+                [(ngModel)]="contactForm.email"
+                name="email"
+                required
+                class="form-input"
+                placeholder="votre@email.com"
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">
+              Sujet *
+            </label>
+            <input 
+              type="text" 
+              id="subject"
+              [(ngModel)]="contactForm.subject"
+              name="subject"
+              required
+              class="form-input"
+              placeholder="Sujet de votre message"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">
+              Message *
+            </label>
+            <textarea 
+              id="message"
+              [(ngModel)]="contactForm.message"
+              name="message"
+              required
+              rows="6"
+              class="form-textarea"
+              placeholder="Décrivez votre demande..."
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit"
+            [disabled]="isSubmitting()"
+            class="submit-button"
+          >
+            <span *ngIf="!isSubmitting()">Envoyer le message</span>
+            <span *ngIf="isSubmitting()" class="submitting-content">
+              <svg class="loading-spinner" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Envoi en cours...
+            </span>
+          </button>
+
+          <!-- Message de succès -->
+          <div *ngIf="isSubmitted()" class="success-message">
+            <div class="success-header">
+              <svg class="success-icon" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="success-title">Message envoyé avec succès !</span>
+            </div>
+            <p class="success-description">Nous vous répondrons dans les plus brefs délais.</p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Informations de contact -->
+      <div class="contact-info-section">
+        <h2 class="section-title">
+          Informations de contact
+        </h2>
+
+        <div class="contact-info-list">
+          <div 
+            *ngFor="let info of contactInfo" 
+            class="contact-info-item"
+          >
+            <div class="contact-info-icon">{{ info.icon }}</div>
+            <div class="contact-info-content">
+              <h3 class="contact-info-title">
+                {{ info.title }}
+              </h3>
+              <a 
+                *ngIf="info.link" 
+                [href]="info.link"
+                class="contact-info-link"
+              >
+                {{ info.content }}
+              </a>
+              <p *ngIf="!info.link" class="contact-info-text">
+                {{ info.content }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte -->
+        <div class="map-section">
+          <h3 class="map-title">
+            Notre localisation
+          </h3>
+          <div class="map-container">
+            <div class="map-placeholder">
+              <svg class="map-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              <p class="map-text">Carte interactive</p>
+              <p class="map-address">123 Rue de la Mode, 75001 Paris</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ rapide -->
+        <div class="faq-section">
+          <h3 class="faq-title">
+            Questions fréquentes
+          </h3>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span class="faq-question-text">Comment retourner un produit ?</span>
+                <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                Vous disposez de 30 jours pour retourner un produit dans son état d'origine. Contactez-nous pour initier le retour.
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary class="faq-question">
+                <span class="faq-question-text">Quels sont les délais de livraison ?</span>
+                <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                Livraison gratuite en 24h pour toute commande supérieure à 50€. Livraison standard en 2-3 jours ouvrés.
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

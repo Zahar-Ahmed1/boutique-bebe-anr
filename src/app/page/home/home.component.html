@@ -1,0 +1,213 @@
+<app-header></app-header>
+
+<!-- Section Hero -->
+<section #heroSection class="hero-section">
+  <app-slider></app-slider>
+</section>
+
+<!-- Section Bestsellers -->
+<section #bestsellersSection class="bestsellers-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Nos Meilleurs Vendeurs</h2>
+      <p class="section-description">Les produits préférés de nos clients</p>
+    </div>
+    
+    <div class="products-grid">
+      <app-bestseller-card 
+        *ngFor="let product of bestsellerProducts.slice(0, 6)" 
+        [product]="product"
+        class="product-card"
+      ></app-bestseller-card>
+    </div>
+  </div>
+</section>
+
+<!-- Section Features -->
+<section #featuresSection class="features-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Pourquoi nous choisir ?</h2>
+      <p class="section-description">Découvrez nos avantages exclusifs</p>
+    </div>
+    
+    <div class="features-grid">
+      <div *ngFor="let feature of features" class="feature-item">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Section Nouveautés -->
+<section #newProductsSection class="new-products-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Nouveautés <span class="text-gradient">2024</span></h2>
+      <p class="section-description">Les dernières tendances pour vos enfants</p>
+      <div class="year-badge">2024</div>
+    </div>
+    
+    <div class="new-products-showcase">
+      <div class="showcase-grid">
+        <div 
+          *ngFor="let product of newProducts.slice(0, 3); let i = index" 
+          class="showcase-card"
+          [class.featured]="i === 0"
+        >
+          <div class="card-badge">
+            <span class="badge-text">Nouveau</span>
+          </div>
+          
+          <div class="product-image-wrapper">
+            <img [src]="product.image" [alt]="product.name" class="product-showcase-image">
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <div class="product-rating">
+                  <div class="stars">
+                    <span 
+                      *ngFor="let filled of getStarArray(product.rating)" 
+                      class="star"
+                      [class.filled]="filled"
+                    >
+                      ★
+                    </span>
+                  </div>
+                  <span class="rating-number">{{ product.rating }}/5</span>
+                </div>
+                
+                <div class="product-features-preview">
+                  <span 
+                    *ngFor="let feature of product.features.slice(0, 2)" 
+                    class="feature-pill"
+                  >
+                    {{ feature }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="product-info-showcase">
+            <div class="category-tag">{{ product.category }}</div>
+            <h3 class="product-title-showcase">{{ product.name }}</h3>
+            
+            <div class="price-showcase">
+              <span class="current-price-showcase">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
+              <span *ngIf="product.originalPrice" class="original-price-showcase">
+                {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
+              </span>
+            </div>
+            
+            <p class="product-description-showcase">{{ product.shortDescription }}</p>
+            
+            <div class="product-meta-showcase">
+              <span class="meta-item">
+                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+                {{ product.ageRange }}
+              </span>
+              <span class="meta-item">
+                <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                </svg>
+                {{ product.brand }}
+              </span>
+            </div>
+            
+            <div class="action-buttons-showcase">
+              <button class="btn-favorite-showcase">
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </button>
+              <button class="btn-cart-showcase">
+                <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                </svg>
+                Ajouter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section-actions">
+      <a routerLink="/products" class="btn-secondary">Explorer toutes les nouveautés</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section Promotions -->
+<section #promotionsSection class="promotions-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Promotions Spéciales</h2>
+      <p class="section-description">Profitez de nos offres exceptionnelles</p>
+    </div>
+    
+    <div class="products-grid">
+      <app-bestseller-card 
+        *ngFor="let product of saleProducts.slice(0, 6)" 
+        [product]="product"
+        class="product-card"
+      ></app-bestseller-card>
+    </div>
+  </div>
+</section>
+
+<!-- Section Témoignages -->
+<section #testimonialsSection class="testimonials-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Avis de nos Clients</h2>
+      <p class="section-description">Ce que disent nos clients satisfaits</p>
+    </div>
+    
+    <app-testimonial-slider></app-testimonial-slider>
+  </div>
+</section>
+
+<!-- Section Newsletter -->
+<section #newsletterSection class="newsletter-section">
+  <div class="container-custom">
+    <div class="newsletter-content">
+      <h2 class="newsletter-title">Restez informé !</h2>
+      <p class="newsletter-description">Recevez nos dernières nouveautés et offres exclusives</p>
+      
+      <div class="newsletter-form" [class.success]="isSubscribed">
+        <div class="form-group">
+          <input 
+            type="email" 
+            [(ngModel)]="newsletterEmail" 
+            placeholder="Votre adresse email" 
+            class="form-input"
+            [disabled]="isSubscribed"
+          >
+          <button 
+            (click)="subscribeNewsletter()" 
+            class="btn-primary"
+            [disabled]="isSubscribed"
+          >
+            {{ isSubscribed ? 'Inscrit !' : 'S\'inscrire' }}
+          </button>
+        </div>
+        
+        <div *ngIf="isSubscribed" class="success-message">
+          <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Merci ! Vous êtes maintenant inscrit à notre newsletter.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

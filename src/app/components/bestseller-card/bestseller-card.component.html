@@ -1,0 +1,103 @@
+<div class="product-card">
+  <!-- Badge -->
+  <div class="badge-container" *ngIf="product.badge || product.discountPercentage">
+    <span *ngIf="product.badge === 'new'" class="badge badge-new">Nouveau</span>
+    <span *ngIf="product.badge === 'sale'" class="badge badge-sale">-{{ discountPercentage }}%</span>
+    <span *ngIf="product.badge === 'trending'" class="badge badge-trending">Tendance</span>
+    <span *ngIf="product.badge === 'bestseller'" class="badge badge-bestseller">Meilleur vendeur</span>
+    <span *ngIf="!product.badge && product.discountPercentage" class="badge badge-sale">-{{ discountPercentage }}%</span>
+  </div>
+
+  <!-- Image du produit -->
+  <div class="product-image-container">
+    <img [src]="product.image" [alt]="product.name" class="product-image">
+    
+    <!-- Actions rapides -->
+    <div class="product-actions">
+      <button 
+        (click)="toggleFavorite()" 
+        class="action-btn favorite-btn"
+        [class.active]="isFavorite"
+        [attr.aria-label]="isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+      >
+        <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </button>
+      
+      <button 
+        (click)="addToCart()" 
+        class="action-btn cart-btn"
+        [class.active]="isInCart"
+        [attr.aria-label]="isInCart ? 'Ajouté au panier' : 'Ajouter au panier'"
+      >
+        <svg *ngIf="!isInCart" class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+        </svg>
+        <svg *ngIf="isInCart" class="action-icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Indicateur de disponibilité -->
+    <div class="availability-indicator" [class]="getAvailabilityClass()">
+      {{ getAvailabilityText() }}
+    </div>
+  </div>
+
+  <!-- Informations du produit -->
+  <div class="product-info">
+    <!-- Catégorie -->
+    <div class="product-category">{{ product.category }}</div>
+    
+    <!-- Nom du produit -->
+    <h3 class="product-name">{{ product.name }}</h3>
+    
+    <!-- Prix -->
+    <div class="price-container">
+      <span class="current-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
+      <span *ngIf="product.originalPrice" class="original-price">
+        {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
+      </span>
+    </div>
+    
+    <!-- Note et avis -->
+    <div class="rating-container">
+      <div class="stars">
+        <span 
+          *ngFor="let isFilled of getStarArray(product.rating); let i = index" 
+          class="star"
+          [class.filled]="isFilled"
+        >
+          ★
+        </span>
+      </div>
+      <span class="rating-text">{{ product.rating }}/5</span>
+      <span class="review-count">({{ product.reviewCount }} avis)</span>
+    </div>
+
+    <!-- Caractéristiques principales -->
+    <div class="product-features" *ngIf="product.features && product.features.length > 0">
+      <span 
+        *ngFor="let feature of product.features.slice(0, 2)" 
+        class="feature-tag"
+      >
+        {{ feature }}
+      </span>
+    </div>
+
+    <!-- Informations supplémentaires -->
+    <div class="product-meta">
+      <span *ngIf="product.brand" class="meta-item">
+        <strong>Marque:</strong> {{ product.brand }}
+      </span>
+      <span *ngIf="product.ageRange" class="meta-item">
+        <strong>Âge:</strong> {{ product.ageRange }}
+      </span>
+      <span *ngIf="product.material" class="meta-item">
+        <strong>Matériau:</strong> {{ product.material }}
+      </span>
+    </div>
+  </div>
+</div>

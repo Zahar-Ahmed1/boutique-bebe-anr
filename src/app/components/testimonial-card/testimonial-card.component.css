@@ -1,0 +1,209 @@
+/* Styles pour la carte de témoignage */
+.testimonial-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray-200);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+[data-theme="dark"] .testimonial-card {
+  background: var(--gray-800);
+  border-color: var(--gray-700);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Container des étoiles */
+.rating-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.star {
+  font-size: 1.25rem;
+  color: var(--gray-300);
+  transition: color 0.2s ease;
+}
+
+.star.filled {
+  color: #fbbf24;
+}
+
+/* Contenu du témoignage */
+.testimonial-content {
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 0;
+}
+
+[data-theme="dark"] .testimonial-text {
+  color: var(--text-secondary);
+}
+
+/* Informations du client */
+.client-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.client-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .client-avatar {
+  border-color: var(--gray-800);
+}
+
+.testimonial-card:hover .client-avatar {
+  transform: scale(1.1);
+}
+
+/* Badge de vérification */
+.verification-badge {
+  position: absolute;
+  bottom: -0.25rem;
+  right: -0.25rem;
+  background: var(--primary-500);
+  color: white;
+  border-radius: 50%;
+  padding: 0.25rem;
+  border: 2px solid white;
+}
+
+[data-theme="dark"] .verification-badge {
+  border-color: var(--gray-800);
+}
+
+.verification-icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+/* Détails du client */
+.client-details {
+  text-align: center;
+}
+
+.client-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.client-role {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Date du témoignage */
+.testimonial-date {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .testimonial-date {
+  border-color: var(--gray-700);
+}
+
+.date-text {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Décoration de citation */
+.quote-decoration {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: var(--primary-200);
+  opacity: 0.2;
+}
+
+[data-theme="dark"] .quote-decoration {
+  color: var(--primary-800);
+}
+
+.quote-icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 1rem;
+  }
+  
+  .testimonial-text {
+    font-size: 1rem;
+  }
+  
+  .client-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  
+  .quote-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    padding: 0.75rem;
+  }
+  
+  .testimonial-text {
+    font-size: 0.875rem;
+  }
+  
+  .client-avatar {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .quote-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
