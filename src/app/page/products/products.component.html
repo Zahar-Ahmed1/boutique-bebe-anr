@@ -5,7 +5,7 @@
     <div class="page-header">
       <h1 class="page-title">Nos <span class="text-gradient">Produits</span></h1>
       <p class="page-description">
-        Découvrez notre sélection de produits de qualité pour vos enfants, 
+        Découvrez notre sélection de produits de qualité pour vos enfants,
         soigneusement choisis pour leur sécurité et leur confort.
       </p>
     </div>
@@ -15,8 +15,8 @@
       <!-- Barre de recherche -->
       <div class="search-section">
         <div class="search-container">
-          <input 
-            type="text" 
+          <input
+            type="text"
             [(ngModel)]="searchQuery"
             (input)="onSearch()"
             placeholder="Rechercher un produit..."
@@ -32,7 +32,7 @@
 
       <!-- Filtres par catégorie -->
       <div class="category-filters">
-        <button 
+        <button
           *ngFor="let category of categories"
           (click)="selectedCategory = category.id"
           class="category-filter-btn"
@@ -76,9 +76,9 @@
                 <div class="price-input-group">
                   <label class="price-label">Min</label>
                   <div class="price-input-wrapper">
-                    <input 
-                      type="number" 
-                      [(ngModel)]="priceRange.min" 
+                    <input
+                      type="number"
+                      [(ngModel)]="priceRange.min"
                       [min]="minProductPrice"
                       [max]="priceRange.max"
                       placeholder="0"
@@ -91,9 +91,9 @@
                 <div class="price-input-group">
                   <label class="price-label">Max</label>
                   <div class="price-input-wrapper">
-                    <input 
-                      type="number" 
-                      [(ngModel)]="priceRange.max" 
+                    <input
+                      type="number"
+                      [(ngModel)]="priceRange.max"
                       [min]="priceRange.min"
                       [max]="maxProductPrice"
                       placeholder="100"
@@ -103,7 +103,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- Slider de prix -->
               <div class="price-slider-container">
                 <div class="price-slider-labels">
@@ -111,31 +111,31 @@
                   <span class="price-slider-max">{{ maxProductPrice }}€</span>
                 </div>
                 <div class="price-slider">
-                  <input 
-                    type="range" 
-                    [min]="minProductPrice" 
-                    [max]="maxProductPrice" 
+                  <input
+                    type="range"
+                    [min]="minProductPrice"
+                    [max]="maxProductPrice"
                     [(ngModel)]="priceRange.min"
                     class="range-slider range-slider-min"
                   >
-                  <input 
-                    type="range" 
-                    [min]="minProductPrice" 
-                    [max]="maxProductPrice" 
+                  <input
+                    type="range"
+                    [min]="minProductPrice"
+                    [max]="maxProductPrice"
                     [(ngModel)]="priceRange.max"
                     class="range-slider range-slider-max"
                   >
                 </div>
                 <div class="price-slider-track"></div>
               </div>
-              
+
               <!-- Affichage des prix sélectionnés -->
               <div class="price-display">
                 <span class="price-range-text">
                   {{ priceRange.min }}€ - {{ priceRange.max }}€
                 </span>
-                <button 
-                  (click)="resetPriceRange()" 
+                <button
+                  (click)="resetPriceRange()"
                   class="price-reset-btn"
                   *ngIf="priceRange.min !== minProductPrice || priceRange.max !== maxProductPrice"
                 >
@@ -150,14 +150,14 @@
             <h4 class="filter-section-title">Note minimum</h4>
             <div class="rating-filter">
               <div class="rating-options">
-                <button 
+                <button
                   *ngFor="let rating of [4, 3, 2, 1]"
                   (click)="selectedRating = selectedRating === rating ? 0 : rating"
                   class="rating-option"
                   [class.rating-selected]="selectedRating === rating"
                 >
                   <span class="rating-stars">
-                    <span *ngFor="let star of [1,2,3,4,5]" 
+                    <span *ngFor="let star of [1,2,3,4,5]"
                           [class.star-filled]="star <= rating"
                           [class.star-empty]="star > rating">
                       ★
@@ -173,7 +173,7 @@
           <div class="filter-section">
             <h4 class="filter-section-title">Tranche d'âge</h4>
             <div class="filter-options">
-              <button 
+              <button
                 *ngFor="let age of ageRanges"
                 (click)="selectedAgeRange = selectedAgeRange === age ? '' : age"
                 class="filter-option"
@@ -188,7 +188,7 @@
           <div class="filter-section">
             <h4 class="filter-section-title">Marque</h4>
             <div class="filter-options">
-              <button 
+              <button
                 *ngFor="let brand of brands"
                 (click)="selectedBrand = selectedBrand === brand ? '' : brand"
                 class="filter-option"
@@ -203,7 +203,7 @@
           <div class="filter-section">
             <h4 class="filter-section-title">Couleur</h4>
             <div class="color-filter">
-              <button 
+              <button
                 *ngFor="let color of colors"
                 (click)="selectedColor = selectedColor === color ? '' : color"
                 class="color-option"

@@ -14,21 +14,63 @@
         <a routerLink="/products" routerLinkActive="nav-link-active" class="nav-link">Produits</a>
         <a routerLink="/categories" routerLinkActive="nav-link-active" class="nav-link">Catégories</a>
         <a routerLink="/about" routerLinkActive="nav-link-active" class="nav-link">À propos</a>
-        <a routerLink="/contact" routerLinkActive="nav-link-active" class="nav-link">Contact</a>
+        <a routerLink="/contact"  routerLinkActive="nav-link-active" class="nav-link">Contact</a>
       </div>
 
       <!-- Actions côté droit -->
       <div class="nav-actions">
-  <!-- Recherche -->
-  <button 
-  (click)="toggleSearch()" 
-  class="action-btn search-toggle"
-  aria-label="Ouvrir la recherche"
->
-  <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-  </svg>
-</button>
+        <!-- Recherche -->
+        <div class="search-container-actions">
+          <button
+            (click)="toggleSearch()"
+            class="action-btn search-toggle"
+            aria-label="Ouvrir la recherche"
+          >
+            <svg class="action-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </button>
+
+          <!-- Barre de recherche à côté de l'icône -->
+          <div *ngIf="isSearchOpen" class="search-bar-next-to-icon">
+            <div class="search-container">
+              <input
+                type="text"
+                [(ngModel)]="searchQuery"
+                (input)="onSearchInput()"
+                (keyup.enter)="onSearch()"
+                placeholder="Rechercher des produits..."
+                class="search-input"
+              >
+              <button (click)="onSearch()" class="search-btn">
+                <svg *ngIf="!isSearching" class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <svg *ngIf="isSearching" class="search-icon loading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Résultats de recherche -->
+            <div *ngIf="searchResults.length > 0" class="search-results">
+              <div *ngFor="let product of searchResults"
+                   class="search-result-item"
+                   (click)="selectSearchResult(product)">
+                <img [src]="product.image" [alt]="product.name" class="search-result-image">
+                <div class="search-result-info">
+                  <h4 class="search-result-title">{{ product.name }}</h4>
+                  <p class="search-result-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+                </div>
+              </div>
+              <div class="search-result-footer">
+                <a routerLink="/products" [queryParams]="{search: searchQuery}" class="search-view-all">
+                  Voir tous les résultats
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -41,8 +83,8 @@
   </a>
 
         <!-- Toggle mode sombre -->
-        <button 
-          (click)="toggleDarkMode()" 
+        <button
+          (click)="toggleDarkMode()"
           class="action-btn theme-toggle"
           [attr.aria-label]="isDarkMode ? 'Passer au mode clair' : 'Passer au mode sombre'"
         >
@@ -54,14 +96,14 @@
           </svg>
         </button>
 
-      
 
-     
-     
+
+
+
 
         <!-- Menu mobile -->
-        <button 
-          (click)="toggleMobileMenu()" 
+        <button
+          (click)="toggleMobileMenu()"
           class="mobile-menu-btn"
           aria-label="Menu mobile"
         >
@@ -72,23 +114,7 @@
       </div>
     </nav>
 
-    <!-- Barre de recherche -->
-    <div *ngIf="isSearchOpen" class="search-bar">
-      <div class="search-container">
-        <input 
-          type="text" 
-          [(ngModel)]="searchQuery" 
-          (keyup.enter)="onSearch()" 
-          placeholder="Rechercher des produits..."
-          class="search-input"
-        >
-        <button (click)="onSearch()" class="search-btn">
-          <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
+
 
     <!-- Menu mobile -->
     <div *ngIf="isMobileMenuOpen" class="mobile-menu">

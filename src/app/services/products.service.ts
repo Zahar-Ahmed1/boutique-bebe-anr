@@ -46,7 +46,7 @@ export interface Category {
 export class ProductsService {
   private productsSubject = new BehaviorSubject<Product[]>([]);
   private categoriesSubject = new BehaviorSubject<Category[]>([]);
-  
+
   public products$ = this.productsSubject.asObservable();
   public categories$ = this.categoriesSubject.asObservable();
 
@@ -211,6 +211,7 @@ export class ProductsService {
       },
       {
         id: '5',
+        badge: 'new',
         name: 'Bonnet Tricoté Laine',
         category: 'Accessoires',
         categoryId: 'accessories',
@@ -265,7 +266,7 @@ export class ProductsService {
         category: 'Vêtements',
         categoryId: 'clothing',
         availability: 'in_stock',
-        badge: 'bestseller',
+        badge: 'new',
         price: 49.99,
         features: ['4 saisons', 'Tissu respirant', 'Fermeture éclair', 'Lavable machine'],
         rating: 4.9,
@@ -380,7 +381,7 @@ export class ProductsService {
     return new Observable(observer => {
       this.products$.subscribe(products => {
         const searchTerm = query.toLowerCase();
-        const results = products.filter(p => 
+        const results = products.filter(p =>
           p.name.toLowerCase().includes(searchTerm) ||
           p.description.toLowerCase().includes(searchTerm) ||
           p.category.toLowerCase().includes(searchTerm) ||

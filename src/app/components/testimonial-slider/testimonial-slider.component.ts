@@ -84,7 +84,7 @@ export class TestimonialSliderComponent implements OnInit, OnDestroy {
       if (this.isAutoPlaying) {
         this.next();
       }
-    }, 5000); // Change toutes les 5 secondes
+    }, 7000); // Change toutes les 5 secondes
   }
 
   stopAutoPlay() {
@@ -98,8 +98,8 @@ export class TestimonialSliderComponent implements OnInit, OnDestroy {
   }
 
   previous() {
-    this.currentIndex = this.currentIndex === 0 
-      ? this.testimonials.length - 1 
+    this.currentIndex = this.currentIndex === 0
+      ? this.testimonials.length - 1
       : this.currentIndex - 1;
   }
 

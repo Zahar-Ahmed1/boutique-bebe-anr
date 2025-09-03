@@ -1,21 +1,21 @@
 <section class="slider-container">
   <!-- Slides -->
   <div class="relative h-full">
-    <div 
-      *ngFor="let slide of slides; let i = index" 
+    <div
+      *ngFor="let slide of slides; let i = index"
       class="slide"
       [class.active]="i === currentSlide"
       [class.inactive]="i !== currentSlide"
     >
       <!-- Image de fond -->
-      <div 
+      <div
         class="slide-bg"
         [style.background-image]="'url(' + slide.image + ')'"
       ></div>
-      
+
       <!-- Overlay sombre -->
       <div class="slide-overlay"></div>
-      
+
       <!-- Contenu du slide -->
       <div class="slide-content">
         <div class="slide-text">
@@ -26,7 +26,7 @@
             {{ slide.subtitle }}
           </p>
           <div class="pt-4">
-            <a 
+            <a
               [routerLink]="slide.ctaLink"
               class="btn-primary"
             >
@@ -39,7 +39,7 @@
   </div>
 
   <!-- Navigation précédent/suivant -->
-  <button 
+  <button
     (click)="previousSlide()"
     (mouseenter)="pauseAutoSlide()"
     (mouseleave)="resumeAutoSlide()"
@@ -51,7 +51,7 @@
     </svg>
   </button>
 
-  <button 
+  <button
     (click)="nextSlide()"
     (mouseenter)="pauseAutoSlide()"
     (mouseleave)="resumeAutoSlide()"
@@ -65,7 +65,7 @@
 
   <!-- Indicateurs de slide -->
   <div class="slider-indicators">
-    <button 
+    <button
       *ngFor="let slide of slides; let i = index"
       (click)="goToSlide(i)"
       (mouseenter)="pauseAutoSlide()"
@@ -77,7 +77,7 @@
   </div>
 
   <!-- Contrôles de pause/play -->
-  <button 
+  <button
     (click)="pauseAutoSlide()"
     (mouseenter)="pauseAutoSlide()"
     class="slider-controls"
