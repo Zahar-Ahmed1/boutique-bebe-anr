@@ -361,8 +361,5 @@ Ce projet est sous licence **MIT**. Voir le fichier [LICENSE](LICENSE) pour plus
 
 ---
 
-<div align="center">
-  <p>⭐ Si ce projet vous plaît, n'oubliez pas de le star sur GitHub !</p>
-  <p>🚀 Construit avec ❤️ et Angular 19</p>
-</div>
+
 # boutique-bebe-anr
