@@ -738,8 +738,12 @@
 /* CTA Section */
 .cta-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
-  color: white;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url('https://images.unsplash.com/photo-1517841905240-472988babdf9') no-repeat center center;
+  background-size: cover;  color: white;
 }
 
 .cta-content {
@@ -814,60 +818,60 @@
   .hero-title {
     font-size: 2.5rem;
   }
-  
+
   .hero-description {
     font-size: 1.125rem;
   }
-  
+
   .hero-stats {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .story-content {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .story-text {
     order: 2;
   }
-  
+
   .story-image {
     order: 1;
   }
-  
+
   .timeline-line {
     left: 2rem;
   }
-  
+
   .timeline-item::before {
     left: 2rem;
   }
-  
+
   .timeline-left,
   .timeline-right {
     padding-left: 4rem;
     padding-right: 0;
     text-align: left;
   }
-  
+
   .section-title {
     font-size: 2rem;
   }
-  
+
   .values-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .team-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .cta-title {
     font-size: 2rem;
   }
-  
+
   .cta-description {
     font-size: 1.125rem;
   }
@@ -877,29 +881,29 @@
   .hero-section {
     padding: 4rem 0 2rem;
   }
-  
+
   .hero-title {
     font-size: 2rem;
   }
-  
+
   .hero-description {
     font-size: 1rem;
   }
-  
+
   .stat-item {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
+
   .section-title {
     font-size: 1.75rem;
   }
-  
+
   .story-img {
     height: 300px;
   }
-  
+
   .member-img {
     width: 10rem;
     height: 10rem;

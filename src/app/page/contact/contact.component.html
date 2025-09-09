@@ -22,8 +22,8 @@
               <label for="name" class="form-label">
                 Nom complet *
               </label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="name"
                 [(ngModel)]="contactForm.name"
                 name="name"
@@ -37,8 +37,8 @@
               <label for="email" class="form-label">
                 Email *
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 id="email"
                 [(ngModel)]="contactForm.email"
                 name="email"
@@ -53,8 +53,8 @@
             <label for="subject" class="form-label">
               Sujet *
             </label>
-            <input 
-              type="text" 
+            <input
+              type="text"
               id="subject"
               [(ngModel)]="contactForm.subject"
               name="subject"
@@ -68,7 +68,7 @@
             <label for="message" class="form-label">
               Message *
             </label>
-            <textarea 
+            <textarea
               id="message"
               [(ngModel)]="contactForm.message"
               name="message"
@@ -79,7 +79,7 @@
             ></textarea>
           </div>
 
-          <button 
+          <button
             type="submit"
             [disabled]="isSubmitting()"
             class="submit-button"
@@ -113,18 +113,19 @@
           Informations de contact
         </h2>
 
-        <div class="contact-info-list">
-          <div 
-            *ngFor="let info of contactInfo" 
+        <div class="contact-info-list " >
+          <div
+            *ngFor="let info of contactInfo"
             class="contact-info-item"
+            id="title"
           >
             <div class="contact-info-icon">{{ info.icon }}</div>
             <div class="contact-info-content">
-              <h3 class="contact-info-title">
+              <h3  class="contact-info-title">
                 {{ info.title }}
               </h3>
-              <a 
-                *ngIf="info.link" 
+              <a
+                *ngIf="info.link"
                 [href]="info.link"
                 class="contact-info-link"
               >

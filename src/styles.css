@@ -24,7 +24,7 @@
   --secondary-800: #075985;
   --secondary-900: #0c4a6e;
 
-  --gray-50: #f9fafb;
+  --gray-50: rgb(255, 255, 255);
   --gray-100: #f3f4f6;
   --gray-200: #e5e7eb;
   --gray-300: #d1d5db;
@@ -48,8 +48,8 @@
 [data-theme="light"] {
   --bg-primary: #ffffff;
   --bg-secondary: #f9fafb;
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
+  --text-primary: #252a37;
+  --text-secondary: #627288;
 }
 
 /* Styles de base */
@@ -96,7 +96,7 @@ body {
   }
 }
 body {
-  zoom: 0.8; /* 90% */
+  zoom: 0.9; /* 90% */
 }
 
 /* Configuration globale pour toutes les pages - utilisation de toute la largeur */

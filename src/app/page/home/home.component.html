@@ -12,10 +12,10 @@
       <h2 class="section-title">Nos Meilleurs Vendeurs</h2>
       <p class="section-description">Les produits préférés de nos clients</p>
     </div>
-    
+
     <div class="products-grid bestsellers-grid">
-      <app-bestseller-card 
-        *ngFor="let product of bestsellerProducts.slice(0, 5)" 
+      <app-bestseller-card
+        *ngFor="let product of bestsellerProducts.slice(0, 5)"
         [product]="product"
         [cardClass]="'bestseller-card'"
       ></app-bestseller-card>
@@ -30,7 +30,7 @@
       <h2 class="section-title">Pourquoi nous choisir ?</h2>
       <p class="section-description">Découvrez nos avantages exclusifs</p>
     </div>
-    
+
     <div class="features-grid">
       <div *ngFor="let feature of features" class="feature-item">
         <div class="feature-icon">{{ feature.icon }}</div>
@@ -51,25 +51,25 @@
       <p class="section-description">Les dernières tendances pour vos enfants</p>
       <div class="year-badge">2024</div>
     </div>
-    
+
     <div class="new-products-scroll-container">
       <div class="new-products-scroll">
-        <div 
-          *ngFor="let product of newProducts.slice(0, 6); let i = index" 
+        <div
+          *ngFor="let product of newProducts.slice(0, 6); let i = index"
           class="new-product-card"
         >
           <div class="card-badge">
             <span class="badge-text">Nouveau</span>
           </div>
-          
+
           <div class="product-image-wrapper">
             <img [src]="product.image" [alt]="product.name" class="product-image">
             <div class="image-overlay">
               <div class="overlay-content">
                 <div class="product-rating">
                   <div class="stars">
-                    <span 
-                      *ngFor="let filled of getStarArray(product.rating)" 
+                    <span
+                      *ngFor="let filled of getStarArray(product.rating)"
                       class="star"
                       [class.filled]="filled"
                     >
@@ -78,10 +78,10 @@
                   </div>
                   <span class="rating-number">{{ product.rating }}/5</span>
                 </div>
-                
+
                 <div class="product-features-preview">
-                  <span 
-                    *ngFor="let feature of product.features.slice(0, 2)" 
+                  <span
+                    *ngFor="let feature of product.features.slice(0, 2)"
                     class="feature-pill"
                   >
                     {{ feature }}
@@ -90,20 +90,20 @@
               </div>
             </div>
           </div>
-          
+
           <div class="product-info">
             <div class="category-tag">{{ product.category }}</div>
             <h3 class="product-title">{{ product.name }}</h3>
-            
+
             <div class="price-container">
               <span class="current-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
               <span *ngIf="product.originalPrice" class="original-price">
                 {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
               </span>
             </div>
-            
+
             <p class="product-description">{{ product.shortDescription }}</p>
-            
+
             <div class="product-meta">
               <span class="meta-item">
                 <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@
                 {{ product.brand }}
               </span>
             </div>
-            
+
             <div class="action-buttons">
               <button class="btn-favorite">
                 <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,30 +136,30 @@
         </div>
       </div>
     </div>
-    
+
     <div class="section-actions">
       <a routerLink="/products" class="btn-secondary">Explorer toutes les nouveautés</a>
     </div>
   </div>
 </section>
 
-<!-- Section Promotions -->
-<section #promotionsSection class="promotions-section">
-  <div class="container-custom">
-    <div class="section-header">
-      <h2 class="section-title">Promotions Spéciales</h2>
-      <p class="section-description">Profitez de nos offres exceptionnelles</p>
-    </div>
-    
-    <div class="products-grid">
-      <app-bestseller-card 
-        *ngFor="let product of saleProducts.slice(0, 6)" 
-        [product]="product"
-        class="product-card"
-      ></app-bestseller-card>
-    </div>
-  </div>
-</section>
+<!--&lt;!&ndash; Section Promotions &ndash;&gt;-->
+<!--<section #promotionsSection class="promotions-section">-->
+<!--  <div class="container-custom">-->
+<!--    <div class="section-header">-->
+<!--      <h2 class="section-title">Promotions Spéciales</h2>-->
+<!--      <p class="section-description">Profitez de nos offres exceptionnelles</p>-->
+<!--    </div>-->
+<!--    -->
+<!--    <div class="products-grid">-->
+<!--      <app-bestseller-card -->
+<!--        *ngFor="let product of saleProducts.slice(0, 6)" -->
+<!--        [product]="product"-->
+<!--        class="product-card"-->
+<!--      ></app-bestseller-card>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</section>-->
 
 <!-- Section Témoignages -->
 <section #testimonialsSection class="testimonials-section">
@@ -168,7 +168,7 @@
       <h2 class="section-title">Avis de nos Clients</h2>
       <p class="section-description">Ce que disent nos clients satisfaits</p>
     </div>
-    
+
     <app-testimonial-slider></app-testimonial-slider>
   </div>
 </section>
@@ -179,25 +179,25 @@
     <div class="newsletter-content">
       <h2 class="newsletter-title">Restez informé !</h2>
       <p class="newsletter-description">Recevez nos dernières nouveautés et offres exclusives</p>
-      
+
       <div class="newsletter-form" [class.success]="isSubscribed">
         <div class="form-group">
-          <input 
-            type="email" 
-            [(ngModel)]="newsletterEmail" 
-            placeholder="Votre adresse email" 
+          <input
+            type="email"
+            [(ngModel)]="newsletterEmail"
+            placeholder="Votre adresse email"
             class="form-input"
             [disabled]="isSubscribed"
           >
-          <button 
-            (click)="subscribeNewsletter()" 
+          <button
+            (click)="subscribeNewsletter()"
             class="btn-primary"
             [disabled]="isSubscribed"
           >
             {{ isSubscribed ? 'Inscrit !' : 'S\'inscrire' }}
           </button>
         </div>
-        
+
         <div *ngIf="isSubscribed" class="success-message">
           <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
