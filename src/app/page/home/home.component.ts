@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('featuresSection') featuresSection!: ElementRef;
   @ViewChild('bestsellersSection') bestsellersSection!: ElementRef;
   @ViewChild('newProductsSection') newProductsSection!: ElementRef;
-  @ViewChild('promotionsSection') promotionsSection!: ElementRef;
+  @ViewChild('blogSection') blogSection!: ElementRef;
   @ViewChild('testimonialsSection') testimonialsSection!: ElementRef;
   @ViewChild('newsletterSection') newsletterSection!: ElementRef;
 
@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   newProducts: any[] = [];
   saleProducts: any[] = [];
   features: any[] = [];
+  latestBlogArticles: any[] = [];
   newsletterEmail: string = '';
   isSubscribed: boolean = false;
 
@@ -65,6 +66,43 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         this.saleProducts = products;
       })
     );
+
+    // Articles de blog pour la page d'accueil
+    this.latestBlogArticles = [
+      {
+        id: 1,
+        title: 'Les 10 étapes essentielles du développement de bébé',
+        excerpt: 'Découvrez les étapes clés du développement de votre enfant de 0 à 2 ans et comment l\'accompagner au mieux dans chaque phase.',
+        image: 'https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=400&h=300&fit=crop',
+        category: 'Développement',
+        date: '15 Jan 2024',
+        readTime: '8 min',
+        views: 1250,
+        likes: 89
+      },
+      {
+        id: 2,
+        title: 'Comment choisir les jouets parfaits pour votre enfant',
+        excerpt: 'Un guide complet pour sélectionner les jouets adaptés à l\'âge et aux besoins de votre enfant, favorisant son épanouissement.',
+        image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+        category: 'Conseils',
+        date: '12 Jan 2024',
+        readTime: '6 min',
+        views: 980,
+        likes: 67
+      },
+      {
+        id: 3,
+        title: 'L\'alimentation équilibrée pour les tout-petits',
+        excerpt: 'Tout ce qu\'il faut savoir sur l\'alimentation de votre enfant : diversification, portions, et recettes saines.',
+        image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop',
+        category: 'Santé',
+        date: '10 Jan 2024',
+        readTime: '10 min',
+        views: 1450,
+        likes: 112
+      }
+    ];
 
     this.features = [
       {
@@ -116,7 +154,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
           // Animation spéciale pour les cartes de produits
           if (entry.target.classList.contains('bestsellers-section') || 
               entry.target.classList.contains('new-products-section') ||
-              entry.target.classList.contains('promotions-section')) {
+              entry.target.classList.contains('blog-section')) {
             this.animateProductCards(entry.target);
           }
           
@@ -139,7 +177,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       this.featuresSection?.nativeElement,
       this.bestsellersSection?.nativeElement,
       this.newProductsSection?.nativeElement,
-      this.promotionsSection?.nativeElement,
+      this.blogSection?.nativeElement,
       this.testimonialsSection?.nativeElement,
       this.newsletterSection?.nativeElement
     ].filter(Boolean);
@@ -152,7 +190,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private animateProductCards(section: Element) {
-    const cards = section.querySelectorAll('.product-card, .showcase-card');
+    const cards = section.querySelectorAll('.product-card, .showcase-card, .blog-card');
     cards.forEach((card: Element, index: number) => {
       setTimeout(() => {
         card.classList.add('card-animate-in');
