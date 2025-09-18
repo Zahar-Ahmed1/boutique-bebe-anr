@@ -6,7 +6,8 @@
       class="slide"
       [class.active]="i === currentSlide"
       [class.inactive]="i !== currentSlide"
-    >
+      [ngStyle]="{ 'background': slide.backgroundColor }"
+       >
       <!-- Image de fond -->
       <div
         class="slide-bg"

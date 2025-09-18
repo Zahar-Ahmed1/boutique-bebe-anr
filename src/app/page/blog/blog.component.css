@@ -29,7 +29,7 @@
 
 /* Section Hero Blog */
 .blog-hero-section {
-  padding: 8rem 0 6rem;
+  padding: 4rem 0 4rem;
   background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(249, 115, 22, 0.03) 50%, var(--bg-secondary) 100%);
   position: relative;
   overflow: hidden;
@@ -60,10 +60,10 @@
 }
 
 .blog-hero-title {
-  font-size: 4rem;
-  font-weight: 800;
+  font-size: 3.5rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -76,7 +76,13 @@
   background-size: 200% 200%;
   animation: gradientShift 3s ease-in-out infinite;
 }
-
+.section-title{
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -93,7 +99,7 @@
 
 /* Section Articles en Vedette */
 .featured-articles-section {
-  padding: 6rem 0;
+  padding: 2rem 0;
   background: var(--bg-primary);
   position: relative;
 }
@@ -315,7 +321,7 @@
 
 /* Section Tous les Articles */
 .all-articles-section {
-  padding: 6rem 0;
+  padding: 2rem 0;
   background: var(--bg-secondary);
   position: relative;
 }
@@ -465,7 +471,8 @@
 
 /* Section Newsletter */
 .newsletter-section {
-  padding: 6rem 0;
+  padding: 4rem 2rem;
+  max-width: 100%;
   background: linear-gradient(135deg, var(--primary-500) 0%, var(--secondary-500) 100%);
   position: relative;
   overflow: hidden;
@@ -663,7 +670,7 @@
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
-  
+
   .articles-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
@@ -674,54 +681,54 @@
   .blog-hero-title {
     font-size: 2.5rem;
   }
-  
+
   .blog-hero-description {
     font-size: 1.25rem;
   }
-  
+
   .featured-articles-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
-  
+
   .articles-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  
+
   .articles-filters {
     gap: 0.75rem;
   }
-  
+
   .filter-btn {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
   }
-  
+
   .form-group {
     flex-direction: column;
     gap: 0.75rem;
     width: 100%;
     padding: 0 1rem;
   }
-  
+
   .form-input {
     padding: 0.9rem 1rem;
     font-size: 0.95rem;
     border-radius: 1.5rem;
   }
-  
+
   .btn-primary {
     width: 100%;
     padding: 0.9rem;
     font-size: 1rem;
     border-radius: 1.5rem;
   }
-  
+
   .newsletter-title {
     font-size: 2rem;
   }
-  
+
   .newsletter-description {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -732,31 +739,31 @@
   .blog-hero-title {
     font-size: 2rem;
   }
-  
+
   .blog-hero-description {
     font-size: 1rem;
   }
-  
+
   .article-content {
     padding: 1.5rem;
   }
-  
+
   .featured-article-card .article-content {
     padding: 2rem;
   }
-  
+
   .article-title {
     font-size: 1.25rem;
   }
-  
+
   .featured-article-card .article-title {
     font-size: 1.5rem;
   }
-  
+
   .newsletter-title {
     font-size: 1.75rem;
   }
-  
+
   .newsletter-description {
     font-size: 0.9rem;
   }
