@@ -20,7 +20,7 @@
   --secondary-400: #38bdf8;
   --secondary-500: #0ea5e9;
   --secondary-600: #0284c7;
-  --secondary-700: #0369a1;
+  --secondary-700: #004ad3;
   --secondary-800: #075985;
   --secondary-900: #0c4a6e;
 
@@ -1570,7 +1570,7 @@ main, section {
   width: 5rem;
   height: 5rem;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  background: var(--secondary-500);
   border-radius: 1rem;
   display: flex;
   align-items: center;

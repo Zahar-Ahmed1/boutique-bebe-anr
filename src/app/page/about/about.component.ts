@@ -38,7 +38,7 @@ interface Statistic {
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('timelineSection') timelineSection!: ElementRef;
-  
+
   private observer!: IntersectionObserver;
   teamMembers: TeamMember[] = [
     {
@@ -108,26 +108,27 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   values = [
     {
-      icon: '🌱',
-      title: 'Durabilité',
-      description: 'Nous nous engageons à proposer des produits durables et respectueux de l\'environnement.'
+      icon: '🤝',
+      title: 'Honnêteté',
+      description: 'Une relation de confiance et de transparence avec nos clients.'
     },
     {
-      icon: '👶',
-      title: 'Qualité',
-      description: 'Chaque produit est sélectionné pour sa qualité et sa sécurité pour vos enfants.'
+      icon: '🍼',
+      title: 'L\'enfant avant tout',
+      description: 'La sécurité et le bien-être des plus petits sont notre priorité.'
     },
     {
-      icon: '💝',
-      title: 'Service client',
-      description: 'Notre équipe est dédiée à vous offrir la meilleure expérience d\'achat possible.'
+      icon: '✅',
+      title: 'Qualité d\'abord',
+      description: 'Des produits fiables et soigneusement sélectionnés pour vos enfants.'
     },
     {
-      icon: '🎨',
-      title: 'Créativité',
-      description: 'Nous créons des designs uniques qui stimulent l\'imagination de vos enfants.'
+      icon: '🏡',
+      title: 'Proximité',
+      description: 'Être à l’écoute et accompagner chaque famille avec attention et bienveillance.'
     }
   ];
+
 
   statistics: Statistic[] = [
     {
@@ -154,18 +155,18 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   certifications = [
     {
-      name: 'Certification Bio',
-      description: 'Tous nos vêtements en coton sont certifiés bio',
+      name: 'Conformité aux normes de sécurité',
+      description: 'tous nos produits respectent les standards de sécurité pour enfants.',
       icon: '🌿'
     },
     {
-      name: 'Sécurité Enfant',
-      description: 'Conformité aux normes européennes de sécurité',
+      name: 'Qualité testée',
+      description: 'chaque produit est soigneusement vérifié avant sa mise en vente.',
       icon: '🛡️'
     },
     {
-      name: 'Commerce Équitable',
-      description: 'Partenaire du commerce équitable',
+      name: 'Matériaux non toxiques',
+      description: 'nos articles sont fabriqués avec des matériaux sûrs pour les enfants.',
       icon: '🤝'
     }
   ];
@@ -195,7 +196,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
         if (entry.isIntersecting) {
           // Animer la section timeline
           const timelineItems = entry.target.querySelectorAll('.timeline-item');
-          
+
           timelineItems.forEach((item, index) => {
             setTimeout(() => {
               item.classList.add('animate-in');

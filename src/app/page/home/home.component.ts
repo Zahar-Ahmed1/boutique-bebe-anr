@@ -106,26 +106,29 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.features = [
       {
-        icon: '🚚',
-        title: 'Livraison Gratuite',
-        description: 'Livraison gratuite pour toute commande supérieure à 50€'
+        icon: 'https://img.icons8.com/ios/100/ffffff/verified-badge.png',
+        title: 'Qualité',
+        description: 'Des produits sûrs, durables et pensés pour le bien-être de vos enfants.'
       },
       {
-        icon: '🔄',
-        title: 'Retour Facile',
-        description: '30 jours pour changer d\'avis, retour gratuit'
+        icon: 'https://img.icons8.com/ios/100/ffffff/shipped.png',
+        title: 'Livraison Rapide',
+        description: 'Recevez vos commandes en moins de 24h à Casablanca et 48h partout au Maroc.'
       },
       {
-        icon: '🛡️',
-        title: 'Garantie 2 Ans',
-        description: 'Tous nos produits sont garantis 2 ans'
+        icon: 'https://img.icons8.com/ios/100/ffffff/product-return.png',
+        title: 'Politique de retour',
+        description: 'En cas de défaut, le retour et la nouvelle livraison sont pris en charge par nos soins.'
       },
       {
-        icon: '💬',
-        title: 'Support 24/7',
-        description: 'Notre équipe est disponible pour vous aider'
+        icon: 'https://img.icons8.com/ios/100/ffffff/help.png',
+        title: 'Service Après-Vente',
+        description: 'Nous restons à vos côtés après votre achat.'
       }
     ];
+
+
+
   }
 
   ngAfterViewInit() {

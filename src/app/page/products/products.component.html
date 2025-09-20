@@ -3,11 +3,11 @@
   <div class="container-custom">
     <!-- En-tête de la page -->
     <div class="page-header">
-      <h1 class="page-title">Nos <span class="text-gradient">Produits</span></h1>
-      <p class="page-description">
-        Découvrez notre sélection de produits de qualité pour vos enfants,
-        soigneusement choisis pour leur sécurité et leur confort.
-      </p>
+      <h1 class="page-title">Nos <span>Produits</span></h1>
+<!--      <p class="page-description">-->
+<!--        Découvrez notre sélection de produits de qualité pour vos enfants,-->
+<!--        soigneusement choisis pour leur sécurité et leur confort.-->
+<!--      </p>-->
     </div>
 
     <!-- Barre de recherche et filtres principaux -->
@@ -30,17 +30,17 @@
         </div>
       </div>
 
-      <!-- Filtres par catégorie -->
-      <div class="category-filters">
-        <button
-          *ngFor="let category of categories"
-          (click)="selectedCategory = category.id"
-          class="category-filter-btn"
-          [class.category-filter-active]="selectedCategory === category.id"
-        >
-          {{ category.name }}
-        </button>
-      </div>
+<!--      &lt;!&ndash; Filtres par catégorie &ndash;&gt;-->
+<!--      <div class="category-filters">-->
+<!--        <button-->
+<!--          *ngFor="let category of categories"-->
+<!--          (click)="selectedCategory = category.id"-->
+<!--          class="category-filter-btn"-->
+<!--          [class.category-filter-active]="selectedCategory === category.id"-->
+<!--        >-->
+<!--          {{ category.name }}-->
+<!--        </button>-->
+<!--      </div>-->
     </div>
 
     <!-- Bouton mobile pour ouvrir les filtres -->
