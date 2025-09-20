@@ -115,7 +115,7 @@ main, section {
 }
 /* Boutons */
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+
   color: white;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
@@ -125,6 +125,7 @@ main, section {
   transition: all 0.3s ease;
   transform: translateY(0);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: white solid 4px;
 }
 
 .btn-primary:hover {
@@ -1029,14 +1030,14 @@ main, section {
   text-decoration: none;
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/*.logo-text {*/
+/*  font-size: 1.5rem;*/
+/*  font-weight: 700;*/
+/*  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));*/
+/*  -webkit-background-clip: text;*/
+/*  -webkit-text-fill-color: transparent;*/
+/*  background-clip: text;*/
+/*}*/
 
 .nav-links {
   display: none;
@@ -1256,9 +1257,9 @@ main, section {
 
 /* Styles pour le footer */
 .footer {
-  background-color: var(--gray-900);
+  background-color: #F5F1E3;
   color: white;
-  padding: 4rem;
+  padding: 3rem 5rem;
   width: 100%;
   margin: 0;
 }
@@ -1311,7 +1312,7 @@ main, section {
 }
 
 .footer-description {
-  color: var(--gray-300);
+  color: #0f172a;
   font-size: 0.875rem;
   line-height: 1.6;
 }
@@ -1348,7 +1349,7 @@ main, section {
 .footer-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color: white;
+  color: rgba(0, 0, 0, 0.8);
   margin-bottom: 0.5rem;
 }
 
@@ -1360,7 +1361,7 @@ main, section {
 }
 
 .footer-link {
-  color: var(--gray-300);
+  color: black;
   text-decoration: none;
   font-size: 0.875rem;
   transition: color 0.2s ease;

@@ -6,15 +6,21 @@
   overflow: hidden;
 }
 .slider-container {
-  height: 500px; /* ou 60vh par exemple */
+  height: 660px; /* ou 60vh par exemple */
   position: relative;
   overflow: hidden;
+}
+.slide-content{
+  margin-right: 45%;
 }
 .slide {
   height: 100%;
 }
 .slide-bg {
-  height: 100%;
+  margin-left: 52%;
+  margin-top: 1%;
+  width: 44%;
+  height:95%;
   background-size: cover;
   background-position: center;
 }

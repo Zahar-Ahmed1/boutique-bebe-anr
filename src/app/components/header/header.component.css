@@ -36,7 +36,7 @@
 .logo-text {
   font-size: 1.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  background: #004ad3;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,11 +68,11 @@
 }
 
 .nav-link:hover {
-  color: var(--primary-500);
+  color: var(--secondary-700);
 }
 
 [data-theme="dark"] .nav-link:hover {
-  color: var(--primary-400);
+  color: var(--secondary-700);
 }
 
 .nav-link::after {
@@ -82,7 +82,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--primary-500);
+  background-color: var(--secondary-700);
   transition: width 0.3s ease;
 }
 
@@ -118,7 +118,7 @@
 
 .action-btn:hover {
   background-color: var(--gray-100);
-  color: var(--primary-500);
+  color: var(--secondary-700);
   transform: translateY(-1px);
 }
 

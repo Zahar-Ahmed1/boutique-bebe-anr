@@ -9,13 +9,12 @@
 <section #bestsellersSection class="bestsellers-section">
   <div class="container-custom">
     <div class="section-header">
-      <h2 class="section-title">Nos Meilleurs Vendeurs</h2>
-      <p class="section-description">Les produits préférés de nos clients</p>
+      <h2 class="section-title">Nos Meilleurs Ventes</h2>
     </div>
-    
+
     <div class="products-grid bestsellers-grid">
-      <app-bestseller-card 
-        *ngFor="let product of bestsellerProducts.slice(0, 5)" 
+      <app-bestseller-card
+        *ngFor="let product of bestsellerProducts.slice(0, 5)"
         [product]="product"
         [cardClass]="'bestseller-card'"
       ></app-bestseller-card>
@@ -23,53 +22,34 @@
   </div>
 </section>
 
-<!-- Section Features -->
-<section #featuresSection class="features-section">
-  <div class="container-custom">
-    <div class="section-header">
-      <h2 class="section-title">Pourquoi nous choisir ?</h2>
-      <p class="section-description">Découvrez nos avantages exclusifs</p>
-    </div>
-    
-    <div class="features-grid">
-      <div *ngFor="let feature of features" class="feature-item">
-        <div class="feature-icon">{{ feature.icon }}</div>
-        <h3 class="feature-title">{{ feature.title }}</h3>
-        <p class="feature-description">{{ feature.description }}</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 
 <!-- Section Nouveautés -->
 <section #newProductsSection class="new-products-section">
   <div class="container-custom">
     <div class="section-header">
-      <h2 class="section-title">Nouveautés <span class="text-gradient">2024</span></h2>
-      <p class="section-description">Les dernières tendances pour vos enfants</p>
-      <div class="year-badge">2024</div>
+      <h2 class="section-title">Nouveautés</h2>
+<!--      <p class="section-description">Les dernières tendances pour vos enfants</p>-->
+<!--      <div class="year-badge">2024</div>-->
     </div>
-    
+
     <div class="new-products-scroll-container">
       <div class="new-products-scroll">
-        <div 
-          *ngFor="let product of newProducts.slice(0, 6); let i = index" 
+        <div
+          *ngFor="let product of newProducts.slice(0, 6); let i = index"
           class="new-product-card"
         >
           <div class="card-badge">
             <span class="badge-text">Nouveau</span>
           </div>
-          
+
           <div class="product-image-wrapper">
             <img [src]="product.image" [alt]="product.name" class="product-image">
             <div class="image-overlay">
               <div class="overlay-content">
                 <div class="product-rating">
                   <div class="stars">
-                    <span 
-                      *ngFor="let filled of getStarArray(product.rating)" 
+                    <span
+                      *ngFor="let filled of getStarArray(product.rating)"
                       class="star"
                       [class.filled]="filled"
                     >
@@ -78,10 +58,10 @@
                   </div>
                   <span class="rating-number">{{ product.rating }}/5</span>
                 </div>
-                
+
                 <div class="product-features-preview">
-                  <span 
-                    *ngFor="let feature of product.features.slice(0, 2)" 
+                  <span
+                    *ngFor="let feature of product.features.slice(0, 2)"
                     class="feature-pill"
                   >
                     {{ feature }}
@@ -90,20 +70,20 @@
               </div>
             </div>
           </div>
-          
+
           <div class="product-info">
             <div class="category-tag">{{ product.category }}</div>
             <h3 class="product-title">{{ product.name }}</h3>
-            
+
             <div class="price-container">
               <span class="current-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
               <span *ngIf="product.originalPrice" class="original-price">
                 {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
               </span>
             </div>
-            
+
             <p class="product-description">{{ product.shortDescription }}</p>
-            
+
             <div class="product-meta">
               <span class="meta-item">
                 <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,7 +98,7 @@
                 {{ product.brand }}
               </span>
             </div>
-            
+
             <div class="action-buttons">
               <button class="btn-favorite">
                 <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,9 +116,27 @@
         </div>
       </div>
     </div>
-    
+
     <div class="section-actions">
       <a routerLink="/products" class="btn-secondary">Explorer toutes les nouveautés</a>
+    </div>
+  </div>
+</section>
+
+<!-- Section Features -->
+<section #featuresSection class="features-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Pourquoi nous choisir ?</h2>
+      <!--      <p class="section-description">Découvrez nos avantages exclusifs</p>-->
+    </div>
+
+    <div class="features-grid">
+      <div *ngFor="let feature of features" class="feature-item">
+        <div class="feature-icon">{{ feature.icon }}</div>
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+      </div>
     </div>
   </div>
 </section>
@@ -147,29 +145,29 @@
 <section #blogSection class="blog-section">
   <div class="container-custom">
     <div class="section-header">
-      <h2 class="section-title">Derniers Articles de <span class="text-gradient">Blog</span></h2>
-      <p class="section-description">Découvrez nos conseils et astuces pour accompagner votre enfant</p>
+      <h2 class="section-title">Derniers Articles de <span >Blog</span></h2>
+<!--      <p class="section-description">Découvrez nos conseils et astuces pour accompagner votre enfant</p>-->
     </div>
-    
+
     <div class="blog-grid">
       <article *ngFor="let article of latestBlogArticles" class="blog-card">
         <div class="blog-image-wrapper">
           <img [src]="article.image" [alt]="article.title" class="blog-image">
-          <div class="blog-category-badge">{{ article.category }}</div>
+<!--          <div class="blog-category-badge">{{ article.category }}</div>-->
         </div>
-        
+
         <div class="blog-content">
           <div class="blog-meta">
             <span class="blog-date">{{ article.date }}</span>
             <span class="blog-read-time">{{ article.readTime }}</span>
           </div>
-          
+
           <h3 class="blog-title">
             <a [routerLink]="['/blog', article.id]" class="blog-title-link">{{ article.title }}</a>
           </h3>
-          
+
           <p class="blog-excerpt">{{ article.excerpt }}</p>
-          
+
           <div class="blog-stats">
             <span class="blog-views">
               <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -185,7 +183,7 @@
               {{ article.likes }}
             </span>
           </div>
-          
+
           <a [routerLink]="['/blog', article.id]" class="blog-read-more">
             Lire l'article
             <svg class="read-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +193,7 @@
         </div>
       </article>
     </div>
-    
+
     <div class="section-actions">
       <a routerLink="/blog" class="btn-secondary">Voir tous les articles</a>
     </div>
@@ -207,9 +205,9 @@
   <div class="container-custom">
     <div class="section-header">
       <h2 class="section-title">Avis de nos Clients</h2>
-      <p class="section-description">Ce que disent nos clients satisfaits</p>
+<!--      <p class="section-description">Ce que disent nos clients satisfaits</p>-->
     </div>
-    
+
     <app-testimonial-slider></app-testimonial-slider>
   </div>
 </section>
@@ -220,25 +218,25 @@
     <div class="newsletter-content">
       <h2 class="newsletter-title">Restez informé !</h2>
       <p class="newsletter-description">Recevez nos dernières nouveautés et offres exclusives</p>
-      
+
       <div class="newsletter-form" [class.success]="isSubscribed">
         <div class="form-group">
-          <input 
-            type="email" 
-            [(ngModel)]="newsletterEmail" 
-            placeholder="Votre adresse email" 
+          <input
+            type="email"
+            [(ngModel)]="newsletterEmail"
+            placeholder="Votre adresse email"
             class="form-input"
             [disabled]="isSubscribed"
           >
-          <button 
-            (click)="subscribeNewsletter()" 
+          <button
+            (click)="subscribeNewsletter()"
             class="btn-primary"
             [disabled]="isSubscribed"
           >
             {{ isSubscribed ? 'Inscrit !' : 'S\'inscrire' }}
           </button>
         </div>
-        
+
         <div *ngIf="isSubscribed" class="success-message">
           <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>

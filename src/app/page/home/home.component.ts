@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.subscription.add(
-      this.productsService.getBestsellerProducts(5).subscribe(products => {
+      this.productsService.getBestsellerProducts(4).subscribe(products => {
         this.bestsellerProducts = products;
       })
     );
@@ -150,19 +150,19 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
-          
+
           // Animation spéciale pour les cartes de produits
-          if (entry.target.classList.contains('bestsellers-section') || 
+          if (entry.target.classList.contains('bestsellers-section') ||
               entry.target.classList.contains('new-products-section') ||
               entry.target.classList.contains('blog-section')) {
             this.animateProductCards(entry.target);
           }
-          
+
           // Animation spéciale pour les features
           if (entry.target.classList.contains('features-section')) {
             this.animateFeatures(entry.target);
           }
-          
+
           // Animation spéciale pour le slider
           if (entry.target.classList.contains('hero-section')) {
             this.animateHero(entry.target);
@@ -210,7 +210,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private animateHero(section: Element) {
     const heroContent = section.querySelector('.hero-content');
     const heroImage = section.querySelector('.hero-image');
-    
+
     if (heroContent) {
       setTimeout(() => heroContent.classList.add('hero-content-animate-in'), 300);
     }
