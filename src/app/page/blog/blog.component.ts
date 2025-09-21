@@ -167,9 +167,30 @@ export class BlogComponent implements OnInit {
   ];
 
   filteredArticles: BlogArticle[] = [];
+  latestArticle: BlogArticle | null = null;
+  otherArticles: BlogArticle[] = [];
 
   ngOnInit(): void {
     this.filteredArticles = this.allArticles;
+    this.organizeArticles();
+  }
+
+  organizeArticles(): void {
+    // Utiliser les articles filtrés au lieu de allArticles
+    const articlesToOrganize = this.filteredArticles.length > 0 ? this.filteredArticles : this.allArticles;
+    
+    // Trier les articles par date (le plus récent en premier)
+    const sortedArticles = [...articlesToOrganize].sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    // Le premier article (le plus récent) prend toute la largeur
+    this.latestArticle = sortedArticles.length > 0 ? sortedArticles[0] : null;
+    
+    // Les 6 articles suivants sont organisés en 3 par ligne
+    this.otherArticles = sortedArticles.slice(1, 7);
   }
 
   filterByCategory(category: string): void {
@@ -179,6 +200,7 @@ export class BlogComponent implements OnInit {
     } else {
       this.filteredArticles = this.allArticles.filter(article => article.category === category);
     }
+    this.organizeArticles();
   }
 
   subscribeNewsletter(): void {

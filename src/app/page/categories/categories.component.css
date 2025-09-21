@@ -170,24 +170,19 @@
 }
 
 .category-card:hover {
-  transform: translateY(-2px);
-}
-
-.category-card-container {
-  background: white;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.category-card:hover .category-card-container {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
 }
 
 .category-image-container {
   position: relative;
   overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.category-card:hover .category-image-container {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }
 
 .category-image {
@@ -201,37 +196,44 @@
   transform: scale(1.1);
 }
 
-.product-count-badge {
+.category-overlay {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2), transparent);
+}
+
+.category-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  color: white;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.category-badge {
   background-color: var(--primary-500);
   color: white;
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 9999px;
-  font-weight: 600;
 }
 
-.category-card-content {
-  padding: 1rem;
-}
-
-.category-card-title {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  transition: color 0.2s ease;
-}
-
-.category-card:hover .category-card-title {
-  color: var(--primary-600);
-}
-
-.category-card-description {
-  color: var(--text-secondary);
+.category-description {
   font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
   margin-bottom: 0.75rem;
   line-height: 1.4;
   display: -webkit-box;
@@ -240,29 +242,14 @@
   overflow: hidden;
 }
 
-.category-card-footer {
+.category-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.age-range-badge-small {
-  font-size: 0.75rem;
-  background-color: var(--gray-100);
-  color: var(--gray-600);
-  padding: 0.25rem 0.5rem;
-  border-radius: 9999px;
-}
-
-.explore-link {
-  color: var(--primary-500);
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.category-card:hover .explore-link {
-  color: var(--primary-600);
+.category-card:hover .discover-link {
+  color: var(--primary-300);
 }
 
 /* Section Call to Action */
@@ -340,7 +327,7 @@
   }
 
   .category-image {
-    height: 14rem;
+    height: 16rem;
   }
 }
 
@@ -368,7 +355,7 @@
   }
 
   .category-image {
-    height: 16rem;
+    height: 18rem;
   }
 
   .cta-container {
@@ -386,6 +373,6 @@
   }
 
   .category-image {
-    height: 18rem;
+    height: 20rem;
   }
 }

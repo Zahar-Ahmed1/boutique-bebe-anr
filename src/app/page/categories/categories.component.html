@@ -66,35 +66,35 @@
           [routerLink]="['/products']"
           [queryParams]="{category: category.id}"
         >
-          <div class="category-card-container">
-            <div class="category-image-container">
-              <img
-                [src]="category.image"
-                [alt]="category.name"
-                class="category-image"
-              >
+          <div class="category-image-container">
+            <img
+              [src]="category.image"
+              [alt]="category.name"
+              class="category-image"
+            >
 
-              <!-- Badge produit count -->
-              <div class="product-count-badge">
-                {{ category.productCount }}
+            <!-- Overlay -->
+            <div class="category-overlay"></div>
+
+            <!-- Contenu -->
+            <div class="category-content">
+              <div class="category-header">
+                <h3 class="category-title">{{ category.name }}</h3>
+                <span class="category-badge">
+                  {{ category.productCount }} produits
+                </span>
               </div>
-            </div>
 
-            <div class="category-card-content">
-              <h3 class="category-card-title">
-                {{ category.name }}
-              </h3>
-
-              <p class="category-card-description">
+              <p class="category-description">
                 {{ category.description }}
               </p>
 
-              <div class="category-card-footer">
-                <span *ngIf="category.ageRange" class="age-range-badge-small">
+              <div class="category-footer">
+                <span *ngIf="category.ageRange" class="age-range-badge">
                   {{ category.ageRange }}
                 </span>
-                <span class="explore-link">
-                  Explorer
+                <span class="discover-link">
+                  Découvrir →
                 </span>
               </div>
             </div>

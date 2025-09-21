@@ -12,16 +12,74 @@
   </div>
 </section>
 
-<!-- Section Articles Principaux -->
-<section class="featured-articles-section">
+<!-- Section Dernier Article -->
+<section class="latest-article-section" *ngIf="latestArticle">
   <div class="container-custom">
     <div class="section-header">
-      <h2 class="section-title">Articles en Vedette</h2>
-      <p class="section-description">Nos articles les plus populaires et utiles</p>
+      <h2 class="section-title">Dernier Article</h2>
+      <p class="section-description">Notre article le plus récent</p>
     </div>
 
-    <div class="featured-articles-grid">
-      <article *ngFor="let article of featuredArticles" class="featured-article-card">
+    <article class="latest-article-card">
+      <div class="latest-article-content">
+        <div class="latest-article-text">
+          <div class="article-meta">
+            <span class="article-date">{{ latestArticle.date }}</span>
+            <span class="article-author">Par {{ latestArticle.author }}</span>
+            <span class="article-read-time">{{ latestArticle.readTime }}</span>
+          </div>
+
+          <h3 class="article-title">
+            <a [routerLink]="['/blog', latestArticle.id]" class="article-title-link">{{ latestArticle.title }}</a>
+          </h3>
+          <p class="article-excerpt">{{ latestArticle.excerpt }}</p>
+
+          <div class="article-tags">
+            <span *ngFor="let tag of latestArticle.tags" class="article-tag">{{ tag }}</span>
+          </div>
+
+          <a [routerLink]="['/blog', latestArticle.id]" class="article-read-more">
+            Lire la suite
+            <svg class="read-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <div class="latest-article-image">
+          <div class="article-image-wrapper">
+            <img [src]="latestArticle.image" [alt]="latestArticle.title" class="article-image">
+            <div class="article-category-badge">{{ latestArticle.category }}</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Section Tous les Articles -->
+<section class="all-articles-section">
+  <div class="container-custom">
+    <div class="section-header">
+      <h2 class="section-title">Tous nos Articles</h2>
+      <p class="section-description">Explorez notre collection complète d'articles</p>
+    </div>
+
+    <!-- Filtres -->
+    <div class="articles-filters">
+      <button
+        *ngFor="let category of categories"
+        class="filter-btn"
+        [class.active]="selectedCategory === category"
+        (click)="filterByCategory(category)"
+      >
+        {{ category }}
+      </button>
+    </div>
+
+    <!-- Grille des articles (6 articles en 3 par ligne) -->
+    <div class="other-articles-grid">
+      <article *ngFor="let article of otherArticles" class="featured-article-card">
         <div class="article-image-wrapper">
           <img [src]="article.image" [alt]="article.title" class="article-image">
           <div class="article-category-badge">{{ article.category }}</div>
@@ -49,66 +107,6 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Section Tous les Articles -->
-<section class="all-articles-section">
-  <div class="container-custom">
-    <div class="section-header">
-      <h2 class="section-title">Tous nos Articles</h2>
-      <p class="section-description">Explorez notre collection complète d'articles</p>
-    </div>
-
-    <!-- Filtres -->
-    <div class="articles-filters">
-      <button
-        *ngFor="let category of categories"
-        class="filter-btn"
-        [class.active]="selectedCategory === category"
-        (click)="filterByCategory(category)"
-      >
-        {{ category }}
-      </button>
-    </div>
-
-    <!-- Grille des articles -->
-    <div class="articles-grid">
-      <article *ngFor="let article of filteredArticles" class="article-card">
-        <div class="article-image-wrapper">
-          <img [src]="article.image" [alt]="article.title" class="article-image">
-          <div class="article-category-badge">{{ article.category }}</div>
-        </div>
-
-        <div class="article-content">
-          <div class="article-meta">
-            <span class="article-date">{{ article.date }}</span>
-            <span class="article-read-time">{{ article.readTime }}</span>
-          </div>
-
-          <h3 class="article-title">
-            <a [routerLink]="['/blog', article.id]" class="article-title-link">{{ article.title }}</a>
-          </h3>
-          <p class="article-excerpt">{{ article.excerpt }}</p>
-
-          <div class="article-stats">
-            <span class="article-views">
-              <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-              </svg>
-              {{ article.views }}
-            </span>
-            <span class="article-likes">
-              <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-              {{ article.likes }}
-            </span>
-          </div>
         </div>
       </article>
     </div>
