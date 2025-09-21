@@ -3,7 +3,7 @@
   <div class="container-custom">
     <!-- En-tête de la page -->
     <div class="page-header">
-      <h1 class="page-title">Nous <span class="text-gradient">Contacter</span></h1>
+      <h1 class="page-title">Nous <span >Contacter</span></h1>
       <p class="page-description">
         Une question ? Un conseil ? N'hésitez pas à nous contacter, notre équipe est là pour vous aider !
       </p>
@@ -143,13 +143,26 @@
             Notre localisation
           </h3>
           <div class="map-container">
-            <div class="map-placeholder">
-              <svg class="map-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <p class="map-text">Carte interactive</p>
-              <p class="map-address">123 Rue de la Mode, 75001 Paris</p>
+            <iframe 
+              [src]="getMapUrl()"
+              width="100%" 
+              height="300" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              class="map-iframe">
+            </iframe>
+            <div class="map-info">
+              <p class="map-address ">{{ mapCoordinates.address }}</p>
+              
+              <a 
+                [href]="getGoogleMapsLink()" 
+                target="_blank" 
+                class="map-link"
+              >
+                Ouvrir dans Google Maps
+              </a>
             </div>
           </div>
         </div>

@@ -328,7 +328,7 @@
 
 .contact-info-title {
   font-weight: 600;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 0.25rem;
 }
 
@@ -343,7 +343,7 @@
 }
 
 .contact-info-text {
-  color: var(--text-secondary);
+  color: var(--primary-600);
   margin: 0;
 }
 
@@ -361,30 +361,56 @@
 .map-container {
   background-color: var(--gray-200);
   border-radius: 0.5rem;
-  height: 16rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.map-placeholder {
-  text-align: center;
-  color: var(--gray-500);
+.map-iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.map-icon {
-  width: 4rem;
-  height: 4rem;
-  margin: 0 auto 0.5rem;
-}
-
-.map-text {
-  font-size: 0.875rem;
-  margin-bottom: 0.25rem;
+.map-info {
+  padding: 1rem;
+  background-color: var(--bg-primary);
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .map-address {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.map-coordinates {
   font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.75rem;
+}
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-600);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--primary-600);
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.map-link:hover {
+  background-color: var(--primary-600);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Section FAQ */
@@ -431,7 +457,7 @@
 
 .faq-question-text {
   font-weight: 500;
-  color: var(--text-primary);
+  color: #ffffff;
 }
 
 .faq-arrow {
@@ -447,7 +473,7 @@
 
 .faq-answer {
   padding: 0.75rem;
-  color: var(--text-secondary);
+  color: #ffffff;
   font-size: 0.875rem;
   line-height: 1.5;
   border-top: 1px solid var(--gray-200);
@@ -463,8 +489,8 @@
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .map-container {
-    height: 18rem;
+  .map-iframe {
+    height: 350px;
   }
 }
 
@@ -482,8 +508,8 @@
     gap: 3rem;
   }
   
-  .map-container {
-    height: 20rem;
+  .map-iframe {
+    height: 400px;
   }
 }
 
@@ -496,8 +522,8 @@
     gap: 4rem;
   }
   
-  .map-container {
-    height: 22rem;
+  .map-iframe {
+    height: 450px;
   }
 }
 
@@ -518,8 +544,8 @@
     background-color: var(--gray-700);
   }
   
-  .map-container {
-    background-color: var(--gray-700);
+  .map-info {
+    background-color: var(--gray-800);
   }
   
   .faq-item {
