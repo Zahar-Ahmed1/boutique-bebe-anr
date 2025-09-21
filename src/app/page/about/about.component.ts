@@ -108,22 +108,22 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   values = [
     {
-      icon: '🤝',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758470886/WhatsApp_Image_2025-09-21_at_01.32.33_w9vxwt.jpg',
       title: 'Honnêteté',
       description: 'Une relation de confiance et de transparence avec nos clients.'
     },
     {
-      icon: '🍼',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471098/WhatsApp_Image_2025-09-21_at_01.34.05_lf7kfw.jpg',
       title: 'L\'enfant avant tout',
       description: 'La sécurité et le bien-être des plus petits sont notre priorité.'
     },
     {
-      icon: '✅',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471233/WhatsApp_Image_2025-09-21_at_01.36.39_csc2ug.jpg',
       title: 'Qualité d\'abord',
       description: 'Des produits fiables et soigneusement sélectionnés pour vos enfants.'
     },
     {
-      icon: '🏡',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471270/haute-qualite_jzwgjw.png',
       title: 'Proximité',
       description: 'Être à l’écoute et accompagner chaque famille avec attention et bienveillance.'
     }
@@ -157,17 +157,17 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       name: 'Conformité aux normes de sécurité',
       description: 'tous nos produits respectent les standards de sécurité pour enfants.',
-      icon: '🌿'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.29.02_gob0f0.jpg'
     },
     {
       name: 'Qualité testée',
       description: 'chaque produit est soigneusement vérifié avant sa mise en vente.',
-      icon: '🛡️'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.27.16_dr1lmi.jpg'
     },
     {
       name: 'Matériaux non toxiques',
       description: 'nos articles sont fabriqués avec des matériaux sûrs pour les enfants.',
-      icon: '🤝'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.31.06_cq1g0o.jpg'
     }
   ];
 

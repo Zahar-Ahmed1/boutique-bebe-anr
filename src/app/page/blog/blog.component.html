@@ -19,7 +19,7 @@
       <h2 class="section-title">Articles en Vedette</h2>
       <p class="section-description">Nos articles les plus populaires et utiles</p>
     </div>
-    
+
     <div class="featured-articles-grid">
       <article *ngFor="let article of featuredArticles" class="featured-article-card">
         <div class="article-image-wrapper">
@@ -27,22 +27,22 @@
           <div class="article-category-badge">{{ article.category }}</div>
           <div class="article-read-time">{{ article.readTime }}</div>
         </div>
-        
+
         <div class="article-content">
           <div class="article-meta">
             <span class="article-date">{{ article.date }}</span>
             <span class="article-author">Par {{ article.author }}</span>
           </div>
-          
+
           <h3 class="article-title">
             <a [routerLink]="['/blog', article.id]" class="article-title-link">{{ article.title }}</a>
           </h3>
           <p class="article-excerpt">{{ article.excerpt }}</p>
-          
+
           <div class="article-tags">
             <span *ngFor="let tag of article.tags" class="article-tag">{{ tag }}</span>
           </div>
-          
+
           <a [routerLink]="['/blog', article.id]" class="article-read-more">
             Lire la suite
             <svg class="read-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,11 +62,11 @@
       <h2 class="section-title">Tous nos Articles</h2>
       <p class="section-description">Explorez notre collection complète d'articles</p>
     </div>
-    
+
     <!-- Filtres -->
     <div class="articles-filters">
-      <button 
-        *ngFor="let category of categories" 
+      <button
+        *ngFor="let category of categories"
         class="filter-btn"
         [class.active]="selectedCategory === category"
         (click)="filterByCategory(category)"
@@ -74,7 +74,7 @@
         {{ category }}
       </button>
     </div>
-    
+
     <!-- Grille des articles -->
     <div class="articles-grid">
       <article *ngFor="let article of filteredArticles" class="article-card">
@@ -82,18 +82,18 @@
           <img [src]="article.image" [alt]="article.title" class="article-image">
           <div class="article-category-badge">{{ article.category }}</div>
         </div>
-        
+
         <div class="article-content">
           <div class="article-meta">
             <span class="article-date">{{ article.date }}</span>
             <span class="article-read-time">{{ article.readTime }}</span>
           </div>
-          
+
           <h3 class="article-title">
             <a [routerLink]="['/blog', article.id]" class="article-title-link">{{ article.title }}</a>
           </h3>
           <p class="article-excerpt">{{ article.excerpt }}</p>
-          
+
           <div class="article-stats">
             <span class="article-views">
               <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,7 +112,7 @@
         </div>
       </article>
     </div>
-    
+
     <!-- Bouton Voir plus -->
     <div class="section-actions">
       <button class="btn-secondary">Voir plus d'articles</button>
@@ -126,25 +126,25 @@
     <div class="newsletter-content">
       <h2 class="newsletter-title">Restez informé !</h2>
       <p class="newsletter-description">Recevez nos derniers articles et conseils directement dans votre boîte mail</p>
-      
+
       <div class="newsletter-form" [class.success]="isSubscribed">
         <div class="form-group">
-          <input 
-            type="email" 
-            [(ngModel)]="newsletterEmail" 
-            placeholder="Votre adresse email" 
+          <input
+            type="email"
+            [(ngModel)]="newsletterEmail"
+            placeholder="Votre adresse email"
             class="form-input"
             [disabled]="isSubscribed"
           >
-          <button 
-            (click)="subscribeNewsletter()" 
+          <button
+            (click)="subscribeNewsletter()"
             class="btn-primary"
             [disabled]="isSubscribed"
           >
             {{ isSubscribed ? 'Inscrit !' : 'S\'inscrire' }}
           </button>
         </div>
-        
+
         <div *ngIf="isSubscribed" class="success-message">
           <svg class="success-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>

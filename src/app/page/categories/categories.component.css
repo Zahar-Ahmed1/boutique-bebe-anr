@@ -272,11 +272,19 @@
 }
 
 .cta-container {
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
-  border-radius: 1rem;
-  padding: 2rem;
+  padding: 2rem 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ),
+  url('https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758470344/WhatsApp_Image_2025-09-21_at_01.00.24_p0j84n.jpg ') no-repeat center center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
   color: white;
 }
+
 
 .cta-title {
   font-size: 1.875rem;
@@ -316,21 +324,21 @@
   .page-title {
     font-size: 3rem;
   }
-  
+
   .featured-categories-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
-  
+
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   .featured-category-image {
     height: 18rem;
   }
-  
+
   .category-image {
     height: 14rem;
   }
@@ -340,29 +348,29 @@
   .categories-page {
     padding: 3rem 0;
   }
-  
+
   .page-title {
     font-size: 3.5rem;
   }
-  
+
   .featured-categories-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
-  
+
   .categories-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
   }
-  
+
   .featured-category-image {
     height: 20rem;
   }
-  
+
   .category-image {
     height: 16rem;
   }
-  
+
   .cta-container {
     padding: 3rem;
   }
@@ -372,11 +380,11 @@
   .page-title {
     font-size: 4rem;
   }
-  
+
   .featured-category-image {
     height: 22rem;
   }
-  
+
   .category-image {
     height: 18rem;
   }

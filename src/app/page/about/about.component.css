@@ -210,13 +210,18 @@
   width: 5rem;
   height: 5rem;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
   border-radius: 1rem;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  transition: transform 0.3s ease;
+  background: var(--secondary-500);
+}
+
+.value-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .value-card:hover .value-icon {

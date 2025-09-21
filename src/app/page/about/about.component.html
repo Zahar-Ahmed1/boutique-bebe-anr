@@ -76,7 +76,7 @@
           class="value-card"
         >
           <div class="value-icon">
-            {{ value.icon }}
+            <img [src]="value.icon" [alt]="value.title" />
           </div>
           <h3 class="value-title">
             {{ value.title }}
@@ -134,7 +134,9 @@
           *ngFor="let cert of certifications"
           class="certification-card"
         >
-          <div class="certification-icon">{{ cert.icon }}</div>
+          <div class="value-icon">
+            <img [src]="cert.icon"  />
+          </div>
           <h3 class="certification-name">{{ cert.name }}</h3>
           <p class="certification-description">{{ cert.description }}</p>
         </div>

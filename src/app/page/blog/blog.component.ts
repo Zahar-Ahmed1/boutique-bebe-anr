@@ -31,9 +31,9 @@ export class BlogComponent implements OnInit {
   newsletterEmail: string = '';
   isSubscribed: boolean = false;
   selectedCategory: string = 'Tous';
-  
+
   categories: string[] = ['Tous', 'Conseils', 'Développement', 'Santé', 'Éducation', 'Lifestyle'];
-  
+
   featuredArticles: BlogArticle[] = [
     {
       id: 1,
@@ -78,7 +78,7 @@ export class BlogComponent implements OnInit {
       likes: 112
     }
   ];
-  
+
   allArticles: BlogArticle[] = [
     {
       id: 4,
@@ -165,7 +165,7 @@ export class BlogComponent implements OnInit {
       likes: 73
     }
   ];
-  
+
   filteredArticles: BlogArticle[] = [];
 
   ngOnInit(): void {
