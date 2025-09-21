@@ -10,7 +10,9 @@
 
   <!-- Image du produit -->
   <div class="product-image-container">
-    <img [src]="product.image" [alt]="product.name" class="product-image">
+    <a [routerLink]="['/product', product.id]" class="product-image-link">
+      <img [src]="product.image" [alt]="product.name" class="product-image">
+    </a>
 
     <!-- Actions rapides -->
     <div class="product-actions">
@@ -40,7 +42,9 @@
     <div class="product-category">{{ product.category }}</div>
 
     <!-- Nom du produit -->
-    <h3 class="product-name">{{ product.name }}</h3>
+    <h3 class="product-name">
+      <a [routerLink]="['/product', product.id]" class="product-name-link">{{ product.name }}</a>
+    </h3>
 
     <!-- Prix -->
     <div class="price-container">
@@ -86,6 +90,16 @@
       <span *ngIf="product.material" class="meta-item">
         <strong>Matériau:</strong> {{ product.material }}
       </span>
+    </div>
+
+    <!-- Bouton Voir les détails -->
+    <div class="product-actions-bottom">
+      <a [routerLink]="['/product', product.id]" class="view-details-btn">
+        Voir les détails
+        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
     </div>
   </div>
 </div>

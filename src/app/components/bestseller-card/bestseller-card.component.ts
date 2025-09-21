@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FavoritesService } from '../../services/favorites.service';
 import { ProductsService, Product } from '../../services/products.service';
 import { Subscription } from 'rxjs';
@@ -7,7 +8,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-bestseller-card',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, RouterModule],
   templateUrl: './bestseller-card.component.html',
   styleUrls: ['./bestseller-card.component.css']
 })
