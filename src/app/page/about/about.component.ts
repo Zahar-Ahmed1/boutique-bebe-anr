@@ -108,22 +108,22 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
   values = [
     {
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758470886/WhatsApp_Image_2025-09-21_at_01.32.33_w9vxwt.jpg',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485368/handshake_24dp_FFFFFF_yahxd1.svg',
       title: 'Honnêteté',
       description: 'Une relation de confiance et de transparence avec nos clients.'
     },
     {
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471098/WhatsApp_Image_2025-09-21_at_01.34.05_lf7kfw.jpg',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485476/family_restroom_24dp_FFFFFF_uxaiya.svg',
       title: 'L\'enfant avant tout',
       description: 'La sécurité et le bien-être des plus petits sont notre priorité.'
     },
     {
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471233/WhatsApp_Image_2025-09-21_at_01.36.39_csc2ug.jpg',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485640/groups_24dp_FFFFFF_yemixy.svg',
       title: 'Qualité d\'abord',
       description: 'Des produits fiables et soigneusement sélectionnés pour vos enfants.'
     },
     {
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471270/haute-qualite_jzwgjw.png',
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485592/verified_24dp_FFFFFF_kwek8f.svg',
       title: 'Proximité',
       description: 'Être à l’écoute et accompagner chaque famille avec attention et bienveillance.'
     }
@@ -157,17 +157,17 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       name: 'Conformité aux normes de sécurité',
       description: 'tous nos produits respectent les standards de sécurité pour enfants.',
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.29.02_gob0f0.jpg'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485734/security_24dp_FFFFFF_uutkkh.svg'
     },
     {
       name: 'Qualité testée',
       description: 'chaque produit est soigneusement vérifié avant sa mise en vente.',
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.27.16_dr1lmi.jpg'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485799/task_alt_24dp_FFFFFF_sxjzco.svg'
     },
     {
       name: 'Matériaux non toxiques',
       description: 'nos articles sont fabriqués avec des matériaux sûrs pour les enfants.',
-      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758471588/WhatsApp_Image_2025-09-21_at_01.31.06_cq1g0o.jpg'
+      icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485917/compost_24dp_FFFFFF_kcwmiz.svg'
     }
   ];
 

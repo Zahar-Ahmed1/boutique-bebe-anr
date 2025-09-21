@@ -43,11 +43,11 @@
               </p>
 
               <div class="featured-category-footer">
-                <span *ngIf="category.ageRange" class="age-range-badge">
-                  {{ category.ageRange }}
-                </span>
+<!--                <span *ngIf="category.ageRange" class="age-range-badge">-->
+<!--                  {{ category.ageRange }}-->
+<!--                </span>-->
                 <span class="discover-link">
-                  Découvrir →
+                  Découvrir
                 </span>
               </div>
             </div>
@@ -56,52 +56,52 @@
       </div>
     </div>
 
-    <!-- Toutes les catégories -->
-    <div class="all-categories-section">
-      <h2 class="section-title">Toutes les <span>Catégories</span></h2>
-      <div class="categories-grid">
-        <div
-          *ngFor="let category of regularCategories"
-          class="category-card"
-          [routerLink]="['/products']"
-          [queryParams]="{category: category.id}"
-        >
-          <div class="category-image-container">
-            <img
-              [src]="category.image"
-              [alt]="category.name"
-              class="category-image"
-            >
+<!--    &lt;!&ndash; Toutes les catégories &ndash;&gt;-->
+<!--    <div class="all-categories-section">-->
+<!--      <h2 class="section-title">Toutes les <span>Catégories</span></h2>-->
+<!--      <div class="categories-grid">-->
+<!--        <div-->
+<!--          *ngFor="let category of regularCategories"-->
+<!--          class="category-card"-->
+<!--          [routerLink]="['/products']"-->
+<!--          [queryParams]="{category: category.id}"-->
+<!--        >-->
+<!--          <div class="category-image-container">-->
+<!--            <img-->
+<!--              [src]="category.image"-->
+<!--              [alt]="category.name"-->
+<!--              class="category-image"-->
+<!--            >-->
 
-            <!-- Overlay -->
-            <div class="category-overlay"></div>
+<!--            &lt;!&ndash; Overlay &ndash;&gt;-->
+<!--            <div class="category-overlay"></div>-->
 
-            <!-- Contenu -->
-            <div class="category-content">
-              <div class="category-header">
-                <h3 class="category-title">{{ category.name }}</h3>
-                <span class="category-badge">
-                  {{ category.productCount }} produits
-                </span>
-              </div>
+<!--            &lt;!&ndash; Contenu &ndash;&gt;-->
+<!--            <div class="category-content">-->
+<!--              <div class="category-header">-->
+<!--                <h3 class="category-title">{{ category.name }}</h3>-->
+<!--                <span class="category-badge">-->
+<!--                  {{ category.productCount }} produits-->
+<!--                </span>-->
+<!--              </div>-->
 
-              <p class="category-description">
-                {{ category.description }}
-              </p>
+<!--              <p class="category-description">-->
+<!--                {{ category.description }}-->
+<!--              </p>-->
 
-              <div class="category-footer">
-                <span *ngIf="category.ageRange" class="age-range-badge">
-                  {{ category.ageRange }}
-                </span>
-                <span class="discover-link">
-                  Découvrir →
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--              <div class="category-footer">-->
+<!--                <span *ngIf="category.ageRange" class="age-range-badge">-->
+<!--                  {{ category.ageRange }}-->
+<!--                </span>-->
+<!--                <span class="discover-link">-->
+<!--                  Découvrir →-->
+<!--                </span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- Call to action -->
     <div class="cta-section">

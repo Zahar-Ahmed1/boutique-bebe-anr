@@ -22,8 +22,8 @@
               <label for="name" class="form-label">
                 Nom complet *
               </label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 id="name"
                 [(ngModel)]="contactForm.name"
                 name="name"
@@ -37,8 +37,8 @@
               <label for="email" class="form-label">
                 Email *
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 id="email"
                 [(ngModel)]="contactForm.email"
                 name="email"
@@ -49,26 +49,44 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="subject" class="form-label">
-              Sujet *
-            </label>
-            <input 
-              type="text" 
-              id="subject"
-              [(ngModel)]="contactForm.subject"
-              name="subject"
-              required
-              class="form-input"
-              placeholder="Sujet de votre message"
-            >
+          <!-- Nouvelle ligne avec Ville et Téléphone -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ville" class="form-label">
+                Ville *
+              </label>
+              <input
+                type="text"
+                id="ville"
+                [(ngModel)]="contactForm.ville"
+                name="ville"
+                required
+                class="form-input"
+                placeholder="Votre ville"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="telephone" class="form-label">
+                Téléphone *
+              </label>
+              <input
+                type="tel"
+                id="telephone"
+                [(ngModel)]="contactForm.telephone"
+                name="telephone"
+                required
+                class="form-input"
+                placeholder="+212 6 12 34 56 78"
+              >
+            </div>
           </div>
 
           <div class="form-group">
             <label for="message" class="form-label">
               Message *
             </label>
-            <textarea 
+            <textarea
               id="message"
               [(ngModel)]="contactForm.message"
               name="message"
@@ -79,19 +97,19 @@
             ></textarea>
           </div>
 
-          <button 
+          <button
             type="submit"
             [disabled]="isSubmitting()"
             class="submit-button"
           >
             <span *ngIf="!isSubmitting()">Envoyer le message</span>
             <span *ngIf="isSubmitting()" class="submitting-content">
-              <svg class="loading-spinner" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Envoi en cours...
-            </span>
+        <svg class="loading-spinner" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Envoi en cours...
+      </span>
           </button>
 
           <!-- Message de succès -->
@@ -107,6 +125,7 @@
         </form>
       </div>
 
+
       <!-- Informations de contact -->
       <div class="contact-info-section">
         <h2 class="section-title">
@@ -114,8 +133,8 @@
         </h2>
 
         <div class="contact-info-list">
-          <div 
-            *ngFor="let info of contactInfo" 
+          <div
+            *ngFor="let info of contactInfo"
             class="contact-info-item"
           >
             <div class="contact-info-icon">{{ info.icon }}</div>
@@ -123,8 +142,8 @@
               <h3 class="contact-info-title">
                 {{ info.title }}
               </h3>
-              <a 
-                *ngIf="info.link" 
+              <a
+                *ngIf="info.link"
                 [href]="info.link"
                 class="contact-info-link"
               >
@@ -143,22 +162,22 @@
             Notre localisation
           </h3>
           <div class="map-container">
-            <iframe 
+            <iframe
               [src]="getMapUrl()"
-              width="100%" 
-              height="300" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
+              width="100%"
+              height="300"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               class="map-iframe">
             </iframe>
             <div class="map-info">
               <p class="map-address ">{{ mapCoordinates.address }}</p>
-              
-              <a 
-                [href]="getGoogleMapsLink()" 
-                target="_blank" 
+
+              <a
+                [href]="getGoogleMapsLink()"
+                target="_blank"
                 class="map-link"
               >
                 Ouvrir dans Google Maps

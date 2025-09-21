@@ -22,7 +22,8 @@ export class ContactComponent {
   contactForm = {
     name: '',
     email: '',
-    subject: '',
+    ville:'',
+    telephone:'',
     message: ''
   };
 
@@ -64,22 +65,23 @@ export class ContactComponent {
   async onSubmit() {
     if (this.isFormValid()) {
       this.isSubmitting.set(true);
-      
+
       // Simuler l'envoi du formulaire
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       console.log('Formulaire envoyé:', this.contactForm);
       this.isSubmitted.set(true);
       this.isSubmitting.set(false);
-      
+
       // Réinitialiser le formulaire
       this.contactForm = {
         name: '',
         email: '',
-        subject: '',
+        ville: '',
+        telephone: '',
         message: ''
       };
-      
+
       // Réinitialiser le message après 5 secondes
       setTimeout(() => {
         this.isSubmitted.set(false);
@@ -90,7 +92,8 @@ export class ContactComponent {
   private isFormValid(): boolean {
     return this.contactForm.name.trim() !== '' &&
            this.contactForm.email.trim() !== '' &&
-           this.contactForm.subject.trim() !== '' &&
+           this.contactForm.ville.trim() !== '' &&
+           this.contactForm.telephone.trim() !== ''&&
            this.contactForm.message.trim() !== '' &&
            this.isValidEmail(this.contactForm.email);
   }

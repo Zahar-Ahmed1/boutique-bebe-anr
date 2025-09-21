@@ -45,15 +45,6 @@
     <h3 class="product-name">
       <a [routerLink]="['/product', product.id]" class="product-name-link">{{ product.name }}</a>
     </h3>
-
-    <!-- Prix -->
-    <div class="price-container">
-      <span class="current-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
-      <span *ngIf="product.originalPrice" class="original-price">
-        {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
-      </span>
-    </div>
-
     <!-- Note et avis -->
     <div class="rating-container">
       <div class="stars">
@@ -69,28 +60,38 @@
       <span class="review-count">({{ product.reviewCount }} avis)</span>
     </div>
 
-    <!-- Caractéristiques principales -->
-    <div class="product-features" *ngIf="product.features && product.features.length > 0">
-      <span
-        *ngFor="let feature of product.features.slice(0, 2)"
-        class="feature-tag"
-      >
-        {{ feature }}
+    <!-- Prix -->
+    <div class="price-container">
+      <span class="current-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
+      <span *ngIf="product.originalPrice" class="original-price">
+        {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
       </span>
     </div>
 
-    <!-- Informations supplémentaires -->
-    <div class="product-meta">
-      <span *ngIf="product.brand" class="meta-item">
-        <strong>Marque:</strong> {{ product.brand }}
-      </span>
-      <span *ngIf="product.ageRange" class="meta-item">
-        <strong>Âge:</strong> {{ product.ageRange }}
-      </span>
-      <span *ngIf="product.material" class="meta-item">
-        <strong>Matériau:</strong> {{ product.material }}
-      </span>
-    </div>
+
+
+<!--    &lt;!&ndash; Caractéristiques principales &ndash;&gt;-->
+<!--    <div class="product-features" *ngIf="product.features && product.features.length > 0">-->
+<!--      <span-->
+<!--        *ngFor="let feature of product.features.slice(0, 2)"-->
+<!--        class="feature-tag"-->
+<!--      >-->
+<!--        {{ feature }}-->
+<!--      </span>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; Informations supplémentaires &ndash;&gt;-->
+<!--    <div class="product-meta">-->
+<!--      <span *ngIf="product.brand" class="meta-item">-->
+<!--        <strong>Marque:</strong> {{ product.brand }}-->
+<!--      </span>-->
+<!--      <span *ngIf="product.ageRange" class="meta-item">-->
+<!--        <strong>Âge:</strong> {{ product.ageRange }}-->
+<!--      </span>-->
+<!--      <span *ngIf="product.material" class="meta-item">-->
+<!--        <strong>Matériau:</strong> {{ product.material }}-->
+<!--      </span>-->
+<!--    </div>-->
 
     <!-- Bouton Voir les détails -->
     <div class="product-actions-bottom">

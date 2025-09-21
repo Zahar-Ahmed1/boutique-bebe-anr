@@ -205,7 +205,7 @@
 }
 
 .feature-icon {
-  font-size: 3rem;
+  font-size: 30rem;
   margin-bottom: 1.5rem;
   display: block;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
@@ -228,7 +228,7 @@
 
 /* Section Bestsellers */
 .bestsellers-section {
-  padding: 4rem 0;
+  width: 100%;
   background: var(--bg-primary);
   position: relative;
 }
@@ -263,7 +263,7 @@
 .bestsellers-grid {
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
-  max-width: 1400px;
+  max-width: 1900px;
 }
 
 /* Responsive pour les bestsellers */
@@ -693,6 +693,12 @@
   margin-bottom: 1rem;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
+.feature-img{
+  margin: 10px;
+  width: 3rem;
+  height: 3rem;
+}
+
 
 .feature-title {
   font-size: 1.25rem;
@@ -1065,7 +1071,7 @@
 .stat-icon {
   width: 1rem;
   height: 1rem;
-  color: var(--primary-500);
+  color: var(--secondary-5);
 }
 
 .blog-read-more {
@@ -1277,6 +1283,8 @@
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  color: var(--secondary-500);
 }
 
 .btn-secondary {

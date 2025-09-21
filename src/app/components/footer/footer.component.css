@@ -1,1 +1,59 @@
 
+.social-links {
+  display: flex;
+  gap: 15px;
+
+
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: #fff; /* icônes en blanc par défaut */
+  transition: all 0.3s ease;
+}
+
+.social-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Couleurs officielles */
+.social-link[aria-label="Facebook"] {
+  background-color: #1877F2; /* bleu Facebook */
+}
+
+.social-link[aria-label="Instagram"] {
+  background: radial-gradient(
+    circle at 30% 107%,
+    #fdf497 0%,
+    #fdf497 5%,
+    #fd5949 45%,
+    #d6249f 60%,
+    #285AEB 90%
+  ); /* dégradé Instagram */
+}
+
+.social-link[aria-label="Twitter"] {
+  background-color: #1DA1F2; /* bleu Twitter */
+}
+
+.social-link[aria-label="YouTube"] {
+  background-color: #FF0000; /* rouge YouTube */
+}
+
+/* Effet hover */
+.social-link:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+.social-link[aria-label="WhatsApp"] {
+  background-color: #25D366; /* vert WhatsApp */
+  color: #fff;
+}
+

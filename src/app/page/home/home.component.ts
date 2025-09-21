@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.subscription.add(
-      this.productsService.getBestsellerProducts(4).subscribe(products => {
+      this.productsService.getBestsellerProducts(5).subscribe(products => {
         this.bestsellerProducts = products;
       })
     );
@@ -106,22 +106,22 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.features = [
       {
-        icon: 'https://img.icons8.com/ios/100/ffffff/verified-badge.png',
+        icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758485976/workspace_premium_24dp_FFFFFF_g98fqb.svg',
         title: 'Qualité',
         description: 'Des produits sûrs, durables et pensés pour le bien-être de vos enfants.'
       },
       {
-        icon: 'https://img.icons8.com/ios/100/ffffff/shipped.png',
+        icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758486134/local_shipping_24dp_FFFFFF_livts4.svg',
         title: 'Livraison Rapide',
         description: 'Recevez vos commandes en moins de 24h à Casablanca et 48h partout au Maroc.'
       },
       {
-        icon: 'https://img.icons8.com/ios/100/ffffff/product-return.png',
+        icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758486245/cached_24dp_FFFFFF_akdbxx.svg',
         title: 'Politique de retour',
         description: 'En cas de défaut, le retour et la nouvelle livraison sont pris en charge par nos soins.'
       },
       {
-        icon: 'https://img.icons8.com/ios/100/ffffff/help.png',
+        icon: 'https://res.cloudinary.com/dxtlsrtoq/image/upload/v1758486313/contact_support_24dp_FFFFFF_w9slot.svg',
         title: 'Service Après-Vente',
         description: 'Nous restons à vos côtés après votre achat.'
       }

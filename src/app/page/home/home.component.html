@@ -56,7 +56,10 @@
 
     <div class="features-grid">
       <div *ngFor="let feature of features" class="feature-item">
-        <img [src]="feature.icon" alt="{{ feature.title }}" class="feature-icon" />
+        <div class="feature-icon">
+          <img [src]="feature.icon" alt="{{ feature.title }}" class="feature-img" />
+        </div>
+
         <h3 class="feature-title">{{ feature.title }}</h3>
         <p class="feature-description">{{ feature.description }}</p>
       </div>
