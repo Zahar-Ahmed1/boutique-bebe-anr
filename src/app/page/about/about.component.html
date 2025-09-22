@@ -76,7 +76,7 @@
           class="value-card"
         >
           <div class="value-icon">
-            <img [src]="value.icon" [alt]="value.title" />
+            <img [src]="value.icon" style="margin: 10px; width: 3rem; height: 3rem;" [alt]="value.title" />
           </div>
           <h3 class="value-title">
             {{ value.title }}
@@ -135,7 +135,7 @@
           class="certification-card"
         >
           <div class="value-icon">
-            <img [src]="cert.icon"  />
+            <img [src]="cert.icon" style="margin: 10px; width: 3rem; height: 3rem;"   alt=""/>
           </div>
           <h3 class="certification-name">{{ cert.name }}</h3>
           <p class="certification-description">{{ cert.description }}</p>

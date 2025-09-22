@@ -22,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   quantity = signal(1);
   showSizeGuide = signal(false);
   showReviews = signal(false);
+  isImageZoomed = signal(false);
 
   constructor(
     private route: ActivatedRoute,
@@ -63,6 +64,12 @@ export class ProductDetailComponent implements OnInit {
 
   selectImage(index: number): void {
     this.selectedImageIndex.set(index);
+    // Reset zoom when changing image
+    this.isImageZoomed.set(false);
+  }
+
+  toggleImageZoom(): void {
+    this.isImageZoomed.set(!this.isImageZoomed());
   }
 
   selectSize(size: string): void {

@@ -56,4 +56,8 @@
   background-color: #25D366; /* vert WhatsApp */
   color: #fff;
 }
+.logo-img {
+  height: 50px;   /* ajuste selon ta navbar */
+  width: auto;    /* garde les proportions */
+}
 

@@ -26,6 +26,11 @@
   display: flex;
   align-items: center;
 }
+.logo-img {
+  height: 50px;   /* ajuste selon ta navbar */
+  width: auto;    /* garde les proportions */
+}
+
 
 .logo-link {
   display: flex;

@@ -20,10 +20,12 @@
     </button>
 
     <!-- Contenu principal -->
-    <div class="product-detail-content" *ngIf="product">
+    <div class="product-detail-content animate-fade-in-up" *ngIf="product">
       <!-- Galerie d'images -->
-      <div class="product-gallery">
-        <div class="main-image-container">
+      <div class="product-gallery animate-slide-in-left">
+        <div class="main-image-container" 
+             [class.zoomed]="isImageZoomed()"
+             (click)="toggleImageZoom()">
           <img 
             [src]="product.images[selectedImageIndex()]" 
             [alt]="product.name"
@@ -54,7 +56,7 @@
       </div>
 
       <!-- Informations du produit -->
-      <div class="product-info">
+      <div class="product-info animate-slide-in-right">
         <!-- En-tête -->
         <div class="product-header">
           <h1 class="product-title">{{ product.name }}</h1>

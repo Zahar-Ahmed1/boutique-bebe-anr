@@ -4,29 +4,34 @@
 <section class="blog-hero-section">
   <div class="container-custom">
     <div class="blog-hero-content">
-      <h1 class="blog-hero-title">Notre <span class="text-gradient">Blog</span></h1>
-      <p class="blog-hero-description">
-        Découvrez nos conseils, astuces et actualités pour accompagner votre enfant dans son développement
-      </p>
+      <h1 class="blog-hero-title">Notre <span class="">Blog</span></h1>
+<!--      <p class="blog-hero-description">-->
+<!--        Découvrez nos conseils, astuces et actualités pour accompagner votre enfant dans son développement-->
+<!--      </p>-->
     </div>
   </div>
 </section>
 
 <!-- Section Dernier Article -->
-<section class="latest-article-section" *ngIf="latestArticle">
+<section class="latest-article-section" *ngIf="latestArticle"
+         [style.background-image]="'url(' + latestArticle.image + ')'">
   <div class="container-custom">
     <div class="section-header">
-      <h2 class="section-title">Dernier Article</h2>
-      <p class="section-description">Notre article le plus récent</p>
+<!--      <h2 class="section-title">Dernier Article</h2>-->
+<!--      <p class="section-description">Notre article le plus récent</p>-->
     </div>
 
     <article class="latest-article-card">
       <div class="latest-article-content">
+        <!-- Badge de catégorie -->
+        <div class="article-category-badge">{{ latestArticle.category }}</div>
+
+        <!-- Contenu centré -->
         <div class="latest-article-text">
           <div class="article-meta">
             <span class="article-date">{{ latestArticle.date }}</span>
             <span class="article-author">Par {{ latestArticle.author }}</span>
-            <span class="article-read-time">{{ latestArticle.readTime }}</span>
+<!--            <span class="article-read-time">{{ latestArticle.readTime }}</span>-->
           </div>
 
           <h3 class="article-title">
@@ -45,13 +50,6 @@
             </svg>
           </a>
         </div>
-
-        <div class="latest-article-image">
-          <div class="article-image-wrapper">
-            <img [src]="latestArticle.image" [alt]="latestArticle.title" class="article-image">
-            <div class="article-category-badge">{{ latestArticle.category }}</div>
-          </div>
-        </div>
       </div>
     </article>
   </div>
@@ -62,7 +60,7 @@
   <div class="container-custom">
     <div class="section-header">
       <h2 class="section-title">Tous nos Articles</h2>
-      <p class="section-description">Explorez notre collection complète d'articles</p>
+<!--      <p class="section-description">Explorez notre collection complète d'articles</p>-->
     </div>
 
     <!-- Filtres -->
@@ -97,11 +95,11 @@
           </h3>
           <p class="article-excerpt">{{ article.excerpt }}</p>
 
-          <div class="article-tags">
-            <span *ngFor="let tag of article.tags" class="article-tag">{{ tag }}</span>
-          </div>
+<!--          <div class="article-tags">-->
+<!--            <span *ngFor="let tag of article.tags" class="article-tag">{{ tag }}</span>-->
+<!--          </div>-->
 
-          <a [routerLink]="['/blog', article.id]" class="article-read-more">
+          <a [routerLink]="['/blog', article.id]" class="blog-read-more">
             Lire la suite
             <svg class="read-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

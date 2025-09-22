@@ -48,6 +48,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(private productsService: ProductsService) {}
 
+
+
+
   ngOnInit() {
     this.subscription.add(
       this.productsService.getBestsellerProducts(5).subscribe(products => {
@@ -133,7 +136,10 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit() {
     this.setupScrollAnimations();
+
   }
+
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
@@ -173,6 +179,8 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
         }
       });
     }, options);
+
+
 
     // Observer tous les éléments de section
     const sections = [
