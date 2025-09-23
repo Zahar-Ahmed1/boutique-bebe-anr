@@ -149,4 +149,19 @@ export class ProductDetailComponent implements OnInit {
     };
     return colorMap[colorName] || '#e5e7eb';
   }
+
+  getStockText(): string {
+    if (!this.product) return '';
+    
+    switch (this.product.availability) {
+      case 'in_stock':
+        return 'En stock';
+      case 'low_stock':
+        return 'Stock limité';
+      case 'out_of_stock':
+        return 'Rupture de stock';
+      default:
+        return 'Disponibilité inconnue';
+    }
+  }
 }

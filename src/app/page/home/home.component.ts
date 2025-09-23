@@ -201,11 +201,13 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private animateProductCards(section: Element) {
-    const cards = section.querySelectorAll('.product-card, .showcase-card, .blog-card');
+    const cards = section.querySelectorAll('.product-card, .showcase-card, .blog-card, .bestseller-card');
     cards.forEach((card: Element, index: number) => {
       setTimeout(() => {
         card.classList.add('card-animate-in');
-      }, index * 150);
+        // Ajouter un effet de révélation progressive
+        card.setAttribute('style', `--index: ${index};`);
+      }, index * 200);
     });
   }
 
@@ -214,7 +216,9 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     featureItems.forEach((item: Element, index: number) => {
       setTimeout(() => {
         item.classList.add('feature-animate-in');
-      }, index * 200);
+        // Ajouter un effet de révélation en cascade
+        item.setAttribute('style', `--index: ${index}; transition-delay: ${index * 0.2}s;`);
+      }, index * 300);
     });
   }
 

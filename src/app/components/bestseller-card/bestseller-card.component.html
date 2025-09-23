@@ -1,4 +1,4 @@
-<div class="product-card" [ngClass]="cardClass">
+<div class="product-card" [ngClass]="getCardClasses()" [attr.data-product-id]="product.id">
   <!-- Badge -->
   <div class="badge-container" *ngIf="product.badge || product.discountPercentage">
     <span *ngIf="product.badge === 'new'" class="badge badge-new">Nouveau</span>
@@ -16,18 +16,7 @@
 
     <!-- Actions rapides -->
     <div class="product-actions">
-      <button
-        (click)="toggleFavorite()"
-        class="action-btn favorite-btn"
-        [class.active]="isFavorite"
-        [attr.aria-label]="isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
-      >
-        <svg class="action-icon" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-      </button>
-
-
+      <!-- Actions rapides supprimées - le bouton favori est maintenant à côté du prix -->
     </div>
 
     <!-- Indicateur de disponibilité -->
@@ -38,13 +27,23 @@
 
   <!-- Informations du produit -->
   <div class="product-info">
-    <!-- Catégorie -->
-    <div class="product-category">{{ product.category }}</div>
+    <!-- État de chargement -->
+    <div *ngIf="isLoading" class="skeleton-content">
+      <div class="skeleton skeleton-text short"></div>
+      <div class="skeleton skeleton-text medium"></div>
+      <div class="skeleton skeleton-text long"></div>
+      <div class="skeleton skeleton-text short"></div>
+    </div>
+    
+    <!-- Contenu normal -->
+    <div *ngIf="!isLoading">
+      <!-- Catégorie -->
+      <div class="product-category">{{ product.category }}</div>
 
-    <!-- Nom du produit -->
-    <h3 class="product-name">
-      <a [routerLink]="['/product', product.id]" class="product-name-link">{{ product.name }}</a>
-    </h3>
+      <!-- Nom du produit -->
+      <h3 class="product-name">
+        <a [routerLink]="['/product', product.id]" class="product-name-link">{{ product.name }}</a>
+      </h3>
     <!-- Note et avis -->
     <div class="rating-container">
       <div class="stars">
@@ -66,6 +65,16 @@
       <span *ngIf="product.originalPrice" class="original-price">
         {{ product.originalPrice | currency:'EUR':'symbol':'1.2-2' }}
       </span>
+      <button
+        (click)="toggleFavorite(); flipCard()"
+        class="heart-btn"
+        [class.active]="isFavorite"
+        [attr.aria-label]="isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'"
+      >
+        <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </button>
     </div>
 
 
@@ -93,14 +102,15 @@
 <!--      </span>-->
 <!--    </div>-->
 
-    <!-- Bouton Voir les détails -->
-    <div class="product-actions-bottom">
-      <a [routerLink]="['/product', product.id]" class="view-details-btn">
-        Voir les détails
-        <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-        </svg>
-      </a>
+      <!-- Bouton Voir les détails -->
+      <div class="product-actions-bottom">
+        <a [routerLink]="['/product', product.id]" class="view-details-btn">
+          Voir les détails
+          <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </div>

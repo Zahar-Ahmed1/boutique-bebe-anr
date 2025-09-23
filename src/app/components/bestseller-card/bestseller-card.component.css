@@ -4,10 +4,90 @@
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid var(--gray-200);
   position: relative;
+  transform: translateY(0);
+  opacity: 1;
+  animation: cardSlideIn 0.6s ease-out;
+}
 
+/* Animation d'entrée de la carte */
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation de pulsation pour les nouvelles cartes */
+@keyframes cardPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+  }
+}
+
+/* Animation de rebond */
+@keyframes cardBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Animation de rotation */
+@keyframes cardRotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(2deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Animation de glissement */
+@keyframes cardSlide {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animation de zoom */
+@keyframes cardZoom {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Styles spécifiques pour les cartes de bestsellers - plus compactes */
@@ -56,9 +136,55 @@
   border-color: var(--gray-700);
 }
 
+/* Animations de survol améliorées */
 .product-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-200);
+}
+
+/* Animation de survol avec rebond */
+.product-card:hover.bounce-hover {
+  animation: cardBounce 0.6s ease-in-out;
+}
+
+/* Animation de survol avec rotation */
+.product-card:hover.rotate-hover {
+  animation: cardRotate 0.5s ease-in-out;
+}
+
+/* Animation de survol avec pulsation */
+.product-card:hover.pulse-hover {
+  animation: cardPulse 1s ease-in-out infinite;
+}
+
+/* Animation de survol avec zoom */
+.product-card:hover.zoom-hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation de survol avec glissement */
+.product-card:hover.slide-hover {
+  transform: translateY(-8px) translateX(5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation de survol avec effet de vague */
+@keyframes waveEffect {
+  0% {
+    transform: translateY(-8px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.03);
+  }
+  100% {
+    transform: translateY(-8px) scale(1);
+  }
+}
+
+.product-card:hover.wave-hover {
+  animation: waveEffect 0.8s ease-in-out infinite;
 }
 
 /* Badge container */
@@ -115,11 +241,37 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1) contrast(1);
 }
 
 .product-card:hover .product-image {
+  transform: scale(1.08) rotate(1deg);
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+}
+
+/* Animation de zoom pour l'image */
+.product-card.zoom-image:hover .product-image {
+  transform: scale(1.15);
+  filter: brightness(1.2) contrast(1.2);
+}
+
+/* Animation de rotation pour l'image */
+.product-card.rotate-image:hover .product-image {
+  transform: scale(1.05) rotate(5deg);
+  filter: hue-rotate(10deg);
+}
+
+/* Animation de flou pour l'image */
+.product-card.blur-image:hover .product-image {
+  transform: scale(1.1);
+  filter: blur(2px) brightness(1.1);
+}
+
+/* Animation de sépia pour l'image */
+.product-card.sepia-image:hover .product-image {
   transform: scale(1.05);
+  filter: sepia(0.5) contrast(1.2);
 }
 
 /* Actions rapides */
@@ -256,6 +408,159 @@
   text-decoration: line-through;
 }
 
+/* Bouton cœur à côté du prix */
+.heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.heart-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(239, 68, 68, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
+.heart-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.heart-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+.heart-btn.active {
+  color: #ef4444;
+  animation: heartBeat 0.6s ease-in-out;
+}
+
+.heart-btn:not(.active) {
+  color: var(--gray-400);
+}
+
+.heart-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1;
+}
+
+.heart-btn:hover .heart-icon {
+  transform: scale(1.3) rotate(-5deg);
+  filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.3));
+}
+
+/* Animation de battement de cœur */
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+[data-theme="dark"] .heart-btn:not(.active) {
+  color: var(--gray-500);
+}
+
+[data-theme="dark"] .heart-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Animation de chargement pour les cartes */
+@keyframes cardLoading {
+  0% {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.product-card.loading {
+  animation: cardLoading 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Animation de chargement avec skeleton */
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: cardLoading 1.5s ease-in-out infinite;
+  border-radius: 0.5rem;
+}
+
+.skeleton-text {
+  height: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-text.short {
+  width: 60%;
+}
+
+.skeleton-text.medium {
+  width: 80%;
+}
+
+.skeleton-text.long {
+  width: 100%;
+}
+
+/* Contenu skeleton */
+.skeleton-content {
+  padding: 1rem 0.75rem;
+}
+
+.skeleton-content .skeleton-text {
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-content .skeleton-text:last-child {
+  margin-bottom: 0;
+}
+
 /* Note et avis */
 .rating-container {
   display: flex;
@@ -272,11 +577,41 @@
 .star {
   font-size: 1rem;
   color: var(--gray-300);
-  transition: color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: inline-block;
+}
+
+.star:hover {
+  transform: scale(1.2) rotate(10deg);
+  filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));
 }
 
 .star.filled {
   color: #fbbf24;
+  animation: starGlow 0.6s ease-in-out;
+}
+
+.star.filled:hover {
+  color: #f59e0b;
+  transform: scale(1.3) rotate(-5deg);
+  filter: drop-shadow(0 4px 8px rgba(251, 191, 36, 0.5));
+}
+
+/* Animation de brillance pour les étoiles */
+@keyframes starGlow {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.2);
+    filter: brightness(1.5) drop-shadow(0 0 8px rgba(251, 191, 36, 0.8));
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
 }
 
 .rating-text {
@@ -427,20 +762,156 @@
   border-radius: 0.5rem;
   font-weight: 500;
   font-size: 0.875rem;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.view-details-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.view-details-btn:hover::before {
+  left: 100%;
 }
 
 .view-details-btn:hover {
   background: var(--secondary-700);
   color: white;
   text-decoration: none;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.view-details-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
 }
 
 .btn-icon {
   width: 1rem;
   height: 1rem;
+}
+
+/* Classes pour différents styles d'animation */
+.product-card.animation-bounce {
+  animation: cardSlideIn 0.6s ease-out, cardBounce 0.8s ease-in-out 0.3s;
+}
+
+.product-card.animation-rotate {
+  animation: cardSlideIn 0.6s ease-out, cardRotate 0.6s ease-in-out 0.2s;
+}
+
+.product-card.animation-pulse {
+  animation: cardSlideIn 0.6s ease-out, cardPulse 1s ease-in-out 0.4s infinite;
+}
+
+.product-card.animation-zoom {
+  animation: cardZoom 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-card.animation-slide {
+  animation: cardSlide 0.7s ease-out;
+}
+
+/* Animations avec délai */
+.product-card.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.product-card.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.product-card.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.product-card.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.product-card.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* Animation de chargement avec effet de vague */
+@keyframes loadingWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.product-card.loading-wave::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: loadingWave 1.5s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* Animation de tremblement */
+@keyframes cardShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-2px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(2px);
+  }
+}
+
+.product-card.shake {
+  animation: cardShake 0.5s ease-in-out;
+}
+
+/* Animation de flip */
+@keyframes cardFlip {
+  0% {
+    transform: perspective(400px) rotateY(0);
+  }
+  50% {
+    transform: perspective(400px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(0);
+  }
+}
+
+.product-card.flip {
+  animation: cardFlip 0.8s ease-in-out;
+}
+
+/* Animation de fade in avec scale */
+@keyframes cardFadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.product-card.fade-in-scale {
+  animation: cardFadeInScale 0.6s ease-out;
 }
 
 /* Mode sombre pour les nouveaux éléments */

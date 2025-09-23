@@ -15,6 +15,11 @@ import { Subscription } from 'rxjs';
 export class BestsellerCardComponent implements OnInit, OnDestroy {
   @Input() product!: Product;
   @Input() cardClass: string = '';
+  @Input() animationType: 'default' | 'bounce' | 'rotate' | 'pulse' | 'zoom' | 'slide' | 'fade-in-scale' = 'default';
+  @Input() hoverEffect: 'default' | 'bounce' | 'rotate' | 'pulse' | 'zoom' | 'slide' | 'wave' = 'default';
+  @Input() imageEffect: 'default' | 'zoom' | 'rotate' | 'blur' | 'sepia' = 'default';
+  @Input() delay: number = 0;
+  @Input() isLoading: boolean = false;
   
   isFavorite = false;
   isInCart = false;
@@ -92,5 +97,60 @@ export class BestsellerCardComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.isInCart = false;
     }, 2000);
+  }
+
+  // Méthodes pour gérer les animations
+  getCardClasses(): string {
+    let classes = this.cardClass;
+    
+    // Animation d'entrée
+    if (this.animationType !== 'default') {
+      classes += ` animation-${this.animationType}`;
+    }
+    
+    // Effet de survol
+    if (this.hoverEffect !== 'default') {
+      classes += ` ${this.hoverEffect}-hover`;
+    }
+    
+    // Effet d'image
+    if (this.imageEffect !== 'default') {
+      classes += ` ${this.imageEffect}-image`;
+    }
+    
+    // Délai d'animation
+    if (this.delay > 0) {
+      const delayClass = Math.min(this.delay, 5);
+      classes += ` delay-${delayClass}`;
+    }
+    
+    // État de chargement
+    if (this.isLoading) {
+      classes += ' loading loading-wave';
+    }
+    
+    return classes.trim();
+  }
+
+  // Animation de tremblement pour les erreurs
+  shakeCard() {
+    const card = document.querySelector(`[data-product-id="${this.product.id}"]`);
+    if (card) {
+      card.classList.add('shake');
+      setTimeout(() => {
+        card.classList.remove('shake');
+      }, 500);
+    }
+  }
+
+  // Animation de flip pour les interactions
+  flipCard() {
+    const card = document.querySelector(`[data-product-id="${this.product.id}"]`);
+    if (card) {
+      card.classList.add('flip');
+      setTimeout(() => {
+        card.classList.remove('flip');
+      }, 800);
+    }
   }
 }
