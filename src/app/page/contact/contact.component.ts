@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import {FavoriteProduct, FavoritesService} from '../../services/favorites.service';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 interface ContactInfo {
   icon: string;
@@ -32,12 +33,21 @@ export class ContactComponent {
   isSubmitted = signal(false);
 
   // Coordonnées GPS pour la carte
+  mapUrl: SafeResourceUrl;
   mapCoordinates = {
     latitude: 33.557209,
     longitude: -7.574079,
     address: 'Casablanca, Maroc'
   };
-  constructor(private favoritesService: FavoritesService) {}
+
+
+
+
+
+  constructor(private favoritesService: FavoritesService, private sanitizer: DomSanitizer) {
+    const embedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3190545074175!2d-7.574079!3d33.557209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd0c56b7d8e5%3A0x123456789abcdef!2sCasablanca%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1727160000000!5m2!1sfr!2sma";
+    this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
 
   contactInfo: ContactInfo[] = [
     {
@@ -71,13 +81,13 @@ export class ContactComponent {
       // Récupérer les produits favoris sauvegardés
       const products: FavoriteProduct[] = this.favoritesService.getSavedOrder();
 
-      let message = `🍼 Nouvelle commande BabyAnnr\n\n`;
-      message += `👤 Nom: ${this.contactForm.name}\n`;
-      message += `📧 Email: ${this.contactForm.email}\n`;
-      message += `📍 Ville: ${this.contactForm.ville}\n`;
-      message += `📞 Téléphone: ${this.contactForm.telephone}\n\n`;
-      message += `📝 Message: ${this.contactForm.message}\n\n`;
-      message += `🛍️ Produits sélectionnés:\n`;
+      let message = ` Nouvelle commande BabyAnnr\n\n`;
+      message += ` Nom: ${this.contactForm.name}\n`;
+      message += ` Email: ${this.contactForm.email}\n`;
+      message += ` Ville: ${this.contactForm.ville}\n`;
+      message += ` Téléphone: ${this.contactForm.telephone}\n\n`;
+      message += ` Message: ${this.contactForm.message}\n\n`;
+      message += ` Produits sélectionnés:\n`;
 
       products.forEach((p, i) => {
         message += `${i + 1}. ${p.name} - ${p.price}€\n`;
@@ -122,13 +132,11 @@ export class ContactComponent {
     return emailRegex.test(email);
   }
 
-  getMapUrl(): string {
-    // URL Google Maps embed avec les coordonnées exactes
-    return `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.1234567890!2d${this.mapCoordinates.longitude}!3d${this.mapCoordinates.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMzJzI1LjkiUyA3wrAzNCcyNi43Ilc!5e0!3m2!1sfr!2sma!4v1234567890123!5m2!1sfr!2sma`;
+  getMapUrl(): SafeResourceUrl {
+    return this.mapUrl;
   }
 
   getGoogleMapsLink(): string {
-    // Lien direct vers Google Maps
-    return `https://www.google.com/maps?q=${this.mapCoordinates.latitude},${this.mapCoordinates.longitude}`;
+    return `https://www.google.com/maps/search/?api=1&query=${this.mapCoordinates.latitude},${this.mapCoordinates.longitude}`;
   }
 }
