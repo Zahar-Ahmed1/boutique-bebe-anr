@@ -5,6 +5,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { FavoritesService, FavoriteProduct } from '../../services/favorites.service';
 import { Subscription } from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
@@ -18,7 +19,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   isDarkMode = false;
   private subscription = new Subscription();
 
-  constructor(private favoritesService: FavoritesService) {}
+  constructor(private favoritesService: FavoritesService ,private router: Router ) {}
 
   ngOnInit() {
     this.checkDarkMode();
@@ -56,5 +57,10 @@ export class FavoritesComponent implements OnInit, OnDestroy {
 
   getFavoriteProductsCount(): number {
     return this.favoritesService.getFavoritesCount();
+  }
+
+  goToContact() {
+    this.favoritesService.saveOrder(this.favoriteProducts); // stocke les favoris
+    this.router.navigate(['/contact']); // redirige vers la page Contact
   }
 }

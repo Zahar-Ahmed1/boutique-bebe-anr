@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
+import {FavoriteProduct, FavoritesService} from '../../services/favorites.service';
 
 interface ContactInfo {
   icon: string;
@@ -36,6 +37,7 @@ export class ContactComponent {
     longitude: -7.574079,
     address: 'Casablanca, Maroc'
   };
+  constructor(private favoritesService: FavoritesService) {}
 
   contactInfo: ContactInfo[] = [
     {
@@ -66,10 +68,27 @@ export class ContactComponent {
     if (this.isFormValid()) {
       this.isSubmitting.set(true);
 
-      // Simuler l'envoi du formulaire
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Récupérer les produits favoris sauvegardés
+      const products: FavoriteProduct[] = this.favoritesService.getSavedOrder();
 
-      console.log('Formulaire envoyé:', this.contactForm);
+      let message = `🍼 Nouvelle commande BabyAnnr\n\n`;
+      message += `👤 Nom: ${this.contactForm.name}\n`;
+      message += `📧 Email: ${this.contactForm.email}\n`;
+      message += `📍 Ville: ${this.contactForm.ville}\n`;
+      message += `📞 Téléphone: ${this.contactForm.telephone}\n\n`;
+      message += `📝 Message: ${this.contactForm.message}\n\n`;
+      message += `🛍️ Produits sélectionnés:\n`;
+
+      products.forEach((p, i) => {
+        message += `${i + 1}. ${p.name} - ${p.price}€\n`;
+      });
+
+      const whatsappNumber = "212706296134"; // <-- Mets ton numéro WhatsApp ici
+      const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      // Ouvrir WhatsApp avec le message pré-rempli
+      window.open(url, "_blank");
+
       this.isSubmitted.set(true);
       this.isSubmitting.set(false);
 
@@ -82,12 +101,12 @@ export class ContactComponent {
         message: ''
       };
 
-      // Réinitialiser le message après 5 secondes
       setTimeout(() => {
         this.isSubmitted.set(false);
       }, 5000);
     }
   }
+
 
   private isFormValid(): boolean {
     return this.contactForm.name.trim() !== '' &&

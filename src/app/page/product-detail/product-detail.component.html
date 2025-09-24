@@ -11,40 +11,40 @@
       <span class="breadcrumb-current">{{ product?.name }}</span>
     </nav>
 
-    <!-- Bouton retour -->
-    <button class="back-button" (click)="goBack()">
-      <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-      </svg>
-      Retour aux produits
-    </button>
+<!--    &lt;!&ndash; Bouton retour &ndash;&gt;-->
+<!--    <button class="back-button" (click)="goBack()">-->
+<!--      <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>-->
+<!--      </svg>-->
+<!--      Retour aux produits-->
+<!--    </button>-->
 
     <!-- Contenu principal -->
     <div class="product-detail-content animate-fade-in-up" *ngIf="product">
       <!-- Galerie d'images -->
       <div class="product-gallery animate-slide-in-left">
-        <div class="main-image-container" 
+        <div class="main-image-container"
              [class.zoomed]="isImageZoomed()"
              (click)="toggleImageZoom()">
-          <img 
-            [src]="product.images[selectedImageIndex()]" 
+          <img
+            [src]="product.images[selectedImageIndex()]"
             [alt]="product.name"
             class="main-image"
           >
           <!-- Badge -->
           <div class="product-badge" *ngIf="product.badge">
             <span [class]="'badge-' + product.badge">
-              {{ product.badge === 'new' ? 'Nouveau' : 
-                 product.badge === 'sale' ? 'Promo' : 
-                 product.badge === 'trending' ? 'Tendance' : 
+              {{ product.badge === 'new' ? 'Nouveau' :
+                 product.badge === 'sale' ? 'Promo' :
+                 product.badge === 'trending' ? 'Tendance' :
                  product.badge === 'bestseller' ? 'Best-seller' : '' }}
             </span>
           </div>
         </div>
-        
+
         <!-- Miniatures -->
         <div class="thumbnail-gallery" *ngIf="product.images.length > 1">
-          <button 
+          <button
             *ngFor="let image of product.images; let i = index"
             class="thumbnail"
             [class.active]="selectedImageIndex() === i"
@@ -62,10 +62,10 @@
           <h1 class="product-title">{{ product.name }}</h1>
           <div class="product-rating">
             <div class="stars">
-              <svg *ngFor="let star of getStarsArray(product.rating)" 
-                   class="star" 
+              <svg *ngFor="let star of getStarsArray(product.rating)"
+                   class="star"
                    [class.filled]="star === 1"
-                   fill="currentColor" 
+                   fill="currentColor"
                    viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
               </svg>
@@ -82,7 +82,7 @@
             <span class="discount" *ngIf="product.discountPercentage">-{{ product.discountPercentage }}%</span>
           </div>
           <!-- Indicateur de stock -->
-          <div class="stock-indicator" 
+          <div class="stock-indicator"
                [class.low-stock]="product.availability === 'low_stock'"
                [class.out-of-stock]="product.availability === 'out_of_stock'">
             <svg class="stock-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -97,11 +97,28 @@
 
         <!-- Sélecteurs -->
         <div class="product-selectors">
+
+          <!-- Couleurs -->
+          <div class="selector-group" *ngIf="product.colors && product.colors.length > 0">
+            <label class="selector-label">Couleur</label>
+            <div class="color-selector">
+              <button
+                *ngFor="let color of product.colors"
+                class="color-option"
+                [class.selected]="selectedColor() === color"
+                (click)="selectColor(color)"
+                [style.background-color]="getColorValue(color)"
+                [title]="color"
+              >
+                <span class="color-name">{{ color }}</span>
+              </button>
+            </div>
+          </div>
           <!-- Tailles -->
           <div class="selector-group" *ngIf="product.sizes && product.sizes.length > 0">
             <label class="selector-label">Taille</label>
             <div class="size-selector">
-              <button 
+              <button
                 *ngFor="let size of product.sizes"
                 class="size-option"
                 [class.selected]="selectedSize() === size"
@@ -115,22 +132,7 @@
             </button>
           </div>
 
-          <!-- Couleurs -->
-          <div class="selector-group" *ngIf="product.colors && product.colors.length > 0">
-            <label class="selector-label">Couleur</label>
-            <div class="color-selector">
-              <button 
-                *ngFor="let color of product.colors"
-                class="color-option"
-                [class.selected]="selectedColor() === color"
-                (click)="selectColor(color)"
-                [style.background-color]="getColorValue(color)"
-                [title]="color"
-              >
-                <span class="color-name">{{ color }}</span>
-              </button>
-            </div>
-          </div>
+
 
           <!-- Quantité -->
           <div class="selector-group">
@@ -145,12 +147,12 @@
 
         <!-- Actions -->
         <div class="product-actions">
-          <button class="btn-primary add-to-cart" (click)="addToCart()">
-            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
-            </svg>
-            Ajouter au panier
-          </button>
+<!--          <button class="btn-primary add-to-cart" (click)="addToCart()">-->
+<!--            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>-->
+<!--            </svg>-->
+<!--            Ajouter au panier-->
+<!--          </button>-->
           <button class="btn-secondary add-to-favorites" (click)="addToFavorites()">
             <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
@@ -176,8 +178,8 @@
           <div class="detail-item">
             <span class="detail-label">Disponibilité:</span>
             <span class="detail-value" [class]="'availability-' + product.availability">
-              {{ product.availability === 'in_stock' ? 'En stock' : 
-                 product.availability === 'low_stock' ? 'Stock limité' : 
+              {{ product.availability === 'in_stock' ? 'En stock' :
+                 product.availability === 'low_stock' ? 'Stock limité' :
                  'Rupture de stock' }}
             </span>
           </div>
@@ -194,7 +196,7 @@
     <div class="product-description-section" *ngIf="product">
       <h2 class="section-title">Description</h2>
       <p class="product-description">{{ product.description }}</p>
-      
+
       <!-- Caractéristiques -->
       <div class="features-section" *ngIf="product.features && product.features.length > 0">
         <h3 class="features-title">Caractéristiques</h3>
@@ -221,16 +223,16 @@
           {{ showReviews() ? 'Masquer' : 'Voir' }} les avis
         </button>
       </div>
-      
+
       <div class="reviews-content" *ngIf="showReviews()">
         <div class="reviews-summary">
           <div class="rating-overview">
             <span class="rating-number">{{ product.rating }}</span>
             <div class="rating-stars">
-              <svg *ngFor="let star of getStarsArray(product.rating)" 
-                   class="star large" 
+              <svg *ngFor="let star of getStarsArray(product.rating)"
+                   class="star large"
                    [class.filled]="star === 1"
-                   fill="currentColor" 
+                   fill="currentColor"
                    viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
               </svg>
@@ -238,7 +240,7 @@
             <span class="rating-count">{{ product.reviewCount }} avis</span>
           </div>
         </div>
-        
+
         <!-- Ici vous pouvez ajouter des avis détaillés -->
         <div class="reviews-placeholder">
           <p>Les avis détaillés seront affichés ici.</p>

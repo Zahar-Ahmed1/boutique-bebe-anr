@@ -49,7 +49,7 @@ export class FavoritesService {
 
   addToFavorites(product: any): void {
     const currentFavorites = this.getFavorites();
-    
+
     // Vérifier si le produit n'est pas déjà dans les favoris
     if (!currentFavorites.find(fav => fav.id === product.id)) {
       const favoriteProduct: FavoriteProduct = {
@@ -64,7 +64,7 @@ export class FavoritesService {
         discount: product.discount,
         addedToFavorites: new Date()
       };
-      
+
       const newFavorites = [...currentFavorites, favoriteProduct];
       this.saveFavorites(newFavorites);
     }
@@ -99,5 +99,15 @@ export class FavoritesService {
       }
       return total;
     }, 0);
+  }
+
+  private currentOrder: FavoriteProduct[] = [];
+
+  saveOrder(products: FavoriteProduct[]) {
+    this.currentOrder = products;
+  }
+
+  getSavedOrder(): FavoriteProduct[] {
+    return this.currentOrder;
   }
 }
