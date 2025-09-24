@@ -600,16 +600,16 @@
 }
 
 .filter-btn:hover {
-  color: white;
-  border-color: var(--primary-500);
+  color: black;
+  border-color: var(--secondary-700);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
+
 }
 
 .filter-btn.active {
   color: white;
-  border-color: var(--primary-500);
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  border-color: var(--secondary-700);
+  background: linear-gradient(135deg, var(--secondary-200), var(--secondary-5));
 }
 
 .filter-btn.active::before {

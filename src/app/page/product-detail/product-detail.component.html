@@ -2,14 +2,18 @@
 
 <div class="product-detail-page" *ngIf="!isLoading()">
   <div class="container-custom">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb">
-      <a routerLink="/" class="breadcrumb-link">Accueil</a>
-      <span class="breadcrumb-separator">></span>
-      <a routerLink="/products" class="breadcrumb-link">Produits</a>
-      <span class="breadcrumb-separator">></span>
-      <span class="breadcrumb-current">{{ product?.name }}</span>
-    </nav>
+    <!-- Navigation Breadcrumb -->
+    <section class="breadcrumb-section">
+      <div class="container-custom">
+        <nav class="breadcrumb-nav">
+          <a routerLink="/" class="breadcrumb-link">Accueil</a>
+          <span class="breadcrumb-separator">></span>
+          <a routerLink="/product" class="breadcrumb-link">Produits</a>
+          <span class="breadcrumb-separator">></span>
+          <span class="breadcrumb-current">{{ product?.name }}</span>
+        </nav>
+      </div>
+    </section>
 
 <!--    &lt;!&ndash; Bouton retour &ndash;&gt;-->
 <!--    <button class="back-button" (click)="goBack()">-->

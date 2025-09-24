@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductsService, Product } from '../../services/products.service';
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, FooterComponent],
+    imports: [CommonModule, HeaderComponent, FooterComponent, RouterLink],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -152,7 +152,7 @@ export class ProductDetailComponent implements OnInit {
 
   getStockText(): string {
     if (!this.product) return '';
-    
+
     switch (this.product.availability) {
       case 'in_stock':
         return 'En stock';

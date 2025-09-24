@@ -47,7 +47,7 @@
 }
 
 .breadcrumb-link {
-  color: var(--primary-600);
+  color: var(--secondary-500);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -189,7 +189,7 @@
 .stat-icon {
   width: 1.125rem;
   height: 1.125rem;
-  color: var(--primary-500);
+  color: var(--secondary-5);
 }
 
 /* Article Image Section */
@@ -735,15 +735,15 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .article-sidebar {
     order: -1;
   }
-  
+
   .article-hero-title {
     font-size: 2.5rem;
   }
-  
+
   .article-hero-excerpt {
     font-size: 1.25rem;
   }
@@ -753,65 +753,65 @@
   .article-hero-title {
     font-size: 2rem;
   }
-  
+
   .article-hero-excerpt {
     font-size: 1.125rem;
   }
-  
+
   .article-meta-hero {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
   }
-  
+
   .article-stats-hero {
     gap: 1.5rem;
   }
-  
+
   .article-main-content {
     padding: 2rem;
   }
-  
+
   .article-text {
     font-size: 1rem;
   }
-  
+
   .article-text h2 {
     font-size: 1.5rem;
   }
-  
+
   .article-text h3 {
     font-size: 1.25rem;
   }
-  
+
   .article-actions {
     flex-direction: column;
   }
-  
+
   .form-group {
     flex-direction: column;
     gap: 0.75rem;
     width: 100%;
     padding: 0 1rem;
   }
-  
+
   .form-input {
     padding: 0.9rem 1rem;
     font-size: 0.95rem;
     border-radius: 1.5rem;
   }
-  
+
   .btn-primary {
     width: 100%;
     padding: 0.9rem;
     font-size: 1rem;
     border-radius: 1.5rem;
   }
-  
+
   .newsletter-title {
     font-size: 2rem;
   }
-  
+
   .newsletter-description {
     font-size: 1rem;
     margin-bottom: 1.5rem;
@@ -822,25 +822,25 @@
   .article-hero-title {
     font-size: 1.75rem;
   }
-  
+
   .article-hero-excerpt {
     font-size: 1rem;
   }
-  
+
   .article-main-content {
     padding: 1.5rem;
   }
-  
+
   .author-card,
   .table-of-contents,
   .related-articles {
     padding: 1.5rem;
   }
-  
+
   .newsletter-title {
     font-size: 1.75rem;
   }
-  
+
   .newsletter-description {
     font-size: 0.9rem;
   }
