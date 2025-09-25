@@ -73,7 +73,6 @@ export class ContactComponent {
       content: 'Lun-Ven: 9h-18h, Sam: 10h-17h'
     }
   ];
-
   async onSubmit() {
     if (this.isFormValid()) {
       this.isSubmitting.set(true);
@@ -81,19 +80,23 @@ export class ContactComponent {
       // Récupérer les produits favoris sauvegardés
       const products: FavoriteProduct[] = this.favoritesService.getSavedOrder();
 
-      let message = ` Nouvelle commande BabyAnnr\n\n`;
-      message += ` Nom: ${this.contactForm.name}\n`;
-      message += ` Email: ${this.contactForm.email}\n`;
-      message += ` Ville: ${this.contactForm.ville}\n`;
-      message += ` Téléphone: ${this.contactForm.telephone}\n\n`;
-      message += ` Message: ${this.contactForm.message}\n\n`;
-      message += ` Produits sélectionnés:\n`;
+      let message = `🍼 Nouvelle commande AnnrStore\n\n`;
+      message += `👤 Nom: ${this.contactForm.name}\n`;
+      message += `📧 Email: ${this.contactForm.email}\n`;
+      message += `📍 Ville: ${this.contactForm.ville}\n`;
+      message += `📞 Téléphone: ${this.contactForm.telephone}\n\n`;
+      message += `📝 Message: ${this.contactForm.message}\n\n`;
 
-      products.forEach((p, i) => {
-        message += `${i + 1}. ${p.name} - ${p.price}€\n`;
-      });
+      if (products.length > 0) {
+        message += `🛍️ Produits sélectionnés:\n`;
+        products.forEach((p, i) => {
+          message += `   ${i + 1}. ${p.name} - ${p.price}€\n`;
+        });
+      } else {
+        message += `🛍️ Aucun produit favori sélectionné.\n`;
+      }
 
-      const whatsappNumber = "212706296134"; // <-- Mets ton numéro WhatsApp ici
+      const whatsappNumber = "212706296134"; // Ton numéro WhatsApp
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
       // Ouvrir WhatsApp avec le message pré-rempli
@@ -116,6 +119,7 @@ export class ContactComponent {
       }, 5000);
     }
   }
+
 
 
   private isFormValid(): boolean {

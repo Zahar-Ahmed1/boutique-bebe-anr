@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import {Router, RouterModule} from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 
@@ -33,7 +33,7 @@ export class BlogComponent implements OnInit {
   selectedCategory: string = 'Tous';
 
   categories: string[] = ['Tous', 'Conseils', 'Développement', 'Santé', 'Éducation', 'Lifestyle'];
-
+  constructor(private router: Router) {}
   featuredArticles: BlogArticle[] = [
     {
       id: 1,
@@ -178,7 +178,7 @@ export class BlogComponent implements OnInit {
   organizeArticles(): void {
     // Utiliser les articles filtrés au lieu de allArticles
     const articlesToOrganize = this.filteredArticles.length > 0 ? this.filteredArticles : this.allArticles;
-    
+
     // Trier les articles par date (le plus récent en premier)
     const sortedArticles = [...articlesToOrganize].sort((a, b) => {
       const dateA = new Date(a.date);
@@ -188,7 +188,7 @@ export class BlogComponent implements OnInit {
 
     // Le premier article (le plus récent) prend toute la largeur
     this.latestArticle = sortedArticles.length > 0 ? sortedArticles[0] : null;
-    
+
     // Les 6 articles suivants sont organisés en 3 par ligne
     this.otherArticles = sortedArticles.slice(1, 7);
   }
@@ -209,5 +209,8 @@ export class BlogComponent implements OnInit {
       // Ici vous pourriez ajouter la logique pour envoyer l'email à votre service
       console.log('Email inscrit:', this.newsletterEmail);
     }
+  }
+  goToBlog(id: number): void {
+    this.router.navigate(['/blog', id]);
   }
 }

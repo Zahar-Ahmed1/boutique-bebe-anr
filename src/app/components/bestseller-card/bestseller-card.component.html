@@ -58,6 +58,11 @@
       <span class="rating-text">{{ product.rating }}/5</span>
       <span class="review-count">({{ product.reviewCount }} avis)</span>
     </div>
+      <p class="descr" style="margin-bottom: 3%">
+        <span *ngIf="product.description" class="product-name-link">
+    {{ product.description | truncateWords:6 }}
+  </span>
+      </p>
 
     <!-- Prix -->
     <div class="price-container">
@@ -89,11 +94,7 @@
 <!--      </span>-->
 <!--    </div>-->
 
-<!--    &lt;!&ndash; Informations supplémentaires &ndash;&gt;-->
-<!--    <div class="product-meta">-->
-<!--      <span *ngIf="product.brand" class="meta-item">-->
-<!--        <strong>Marque:</strong> {{ product.brand }}-->
-<!--      </span>-->
+
 <!--      <span *ngIf="product.ageRange" class="meta-item">-->
 <!--        <strong>Âge:</strong> {{ product.ageRange }}-->
 <!--      </span>-->

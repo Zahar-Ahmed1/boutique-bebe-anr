@@ -99,7 +99,7 @@
 <!--            <span *ngFor="let tag of article.tags" class="article-tag">{{ tag }}</span>-->
 <!--          </div>-->
 
-          <a [routerLink]="['/blog', article.id]" class="blog-read-more">
+          <a (click)="goToBlog(article.id)" class="blog-read-more">
             Lire la suite
             <svg class="read-more-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

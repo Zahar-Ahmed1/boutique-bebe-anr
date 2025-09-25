@@ -394,6 +394,7 @@
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 1rem;
+
 }
 
 .current-price {
@@ -923,5 +924,9 @@
   .product-name-link:hover {
     color: var(--secondary-500);
   }
+
 }
 
+descr{
+margin-bottom: 20px;
+}

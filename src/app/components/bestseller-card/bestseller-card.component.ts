@@ -4,11 +4,12 @@ import { RouterModule } from '@angular/router';
 import { FavoritesService } from '../../services/favorites.service';
 import { ProductsService, Product } from '../../services/products.service';
 import { Subscription } from 'rxjs';
+import {TruncateWordsPipe} from '../../truncate-words.pipe';
 
 @Component({
   selector: 'app-bestseller-card',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe, RouterModule],
+  imports: [CommonModule, CurrencyPipe, RouterModule, TruncateWordsPipe],
   templateUrl: './bestseller-card.component.html',
   styleUrls: ['./bestseller-card.component.css']
 })
@@ -20,7 +21,7 @@ export class BestsellerCardComponent implements OnInit, OnDestroy {
   @Input() imageEffect: 'default' | 'zoom' | 'rotate' | 'blur' | 'sepia' = 'default';
   @Input() delay: number = 0;
   @Input() isLoading: boolean = false;
-  
+
   isFavorite = false;
   isInCart = false;
   private subscription = new Subscription();
@@ -102,33 +103,33 @@ export class BestsellerCardComponent implements OnInit, OnDestroy {
   // Méthodes pour gérer les animations
   getCardClasses(): string {
     let classes = this.cardClass;
-    
+
     // Animation d'entrée
     if (this.animationType !== 'default') {
       classes += ` animation-${this.animationType}`;
     }
-    
+
     // Effet de survol
     if (this.hoverEffect !== 'default') {
       classes += ` ${this.hoverEffect}-hover`;
     }
-    
+
     // Effet d'image
     if (this.imageEffect !== 'default') {
       classes += ` ${this.imageEffect}-image`;
     }
-    
+
     // Délai d'animation
     if (this.delay > 0) {
       const delayClass = Math.min(this.delay, 5);
       classes += ` delay-${delayClass}`;
     }
-    
+
     // État de chargement
     if (this.isLoading) {
       classes += ' loading loading-wave';
     }
-    
+
     return classes.trim();
   }
 

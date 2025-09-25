@@ -108,12 +108,12 @@
 
               <!-- Boutons d'action -->
               <div class="action-buttons">
-                <button class="add-to-cart-btn">
-                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
-                  </svg>
-                  Ajouter au panier
-                </button>
+<!--                <button class="add-to-cart-btn">-->
+<!--                  <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">-->
+<!--                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m6 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>-->
+<!--                  </svg>-->
+<!--                  Ajouter au panier-->
+<!--                </button>-->
               </div>
             </div>
           </div>
@@ -121,30 +121,45 @@
       </div>
 
       <!-- Message si aucun favori -->
-      <div *ngIf="favoriteProducts.length === 0" class="empty-favorites">
+      <div class="empty-favorites">
+      <div *ngIf="favoriteProducts.length === 0" >
         <div class="empty-icon">💔</div>
         <h2 class="empty-title">Aucun produit favori</h2>
         <p class="empty-description">
           Vous n'avez pas encore ajouté de produits à vos favoris.
         </p>
-        <a (click)="goToContact()"
-           class="browse-products-btn">
-          Parcourir les produits
-        </a>
-      </div>
-    </div>
-    <button (click)="goToContact()">🛒 Commander</button>
 
-    <!-- Section de recommandations -->
-    <div *ngIf="favoriteProducts.length > 0" class="recommendations-section">
-      <h2 class="section-title">Vous pourriez aussi aimer</h2>
-      <div class="recommendations-grid">
-        <!-- Ici on pourrait ajouter des produits recommandés basés sur les favoris -->
-        <div class="recommendation-placeholder">
-          <p>Produits recommandés basés sur vos favoris</p>
-        </div>
+      </div>
+      <!-- Bouton unique -->
+      <div class="favorites-action">
+        <button class="btn-secondary"
+                *ngIf="favoriteProducts.length > 0; else browseBtn"
+                (click)="goToContact()">
+          🛒 Commander
+        </button>
+
+        <!-- Template pour parcourir -->
+        <ng-template #browseBtn>
+          <button class="btn-secondary" (click)="goToProducts()">
+            🔎 Parcourir les produits
+          </button>
+        </ng-template>
       </div>
     </div>
+    </div>
+
+
+
+<!--    &lt;!&ndash; Section de recommandations &ndash;&gt;-->
+<!--    <div *ngIf="favoriteProducts.length > 0" class="recommendations-section">-->
+<!--      <h2 class="section-title">Vous pourriez aussi aimer</h2>-->
+<!--      <div class="recommendations-grid">-->
+<!--        &lt;!&ndash; Ici on pourrait ajouter des produits recommandés basés sur les favoris &ndash;&gt;-->
+<!--        <div class="recommendation-placeholder">-->
+<!--          <p>Produits recommandés basés sur vos favoris</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </main>
 

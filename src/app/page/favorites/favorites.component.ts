@@ -63,4 +63,9 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     this.favoritesService.saveOrder(this.favoriteProducts); // stocke les favoris
     this.router.navigate(['/contact']); // redirige vers la page Contact
   }
+  goToProducts() {
+    this.router.navigate(['/products']);
+  }
 }
+
+
