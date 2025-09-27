@@ -1,13 +1,22 @@
-/* Styles pour le header */
+
+/* Header par défaut (fond blanc) */
 .header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white; /* blanc au départ */
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--gray-200);
   transition: all 0.3s ease;
 }
+
+/* Quand on scrolle */
+.header.scrolled {
+  background-color: #F5F1E3; /* beige après scroll */
+}
+
+
+
 
 [data-theme="dark"] .header {
   background-color: rgba(17, 24, 39, 0.95);

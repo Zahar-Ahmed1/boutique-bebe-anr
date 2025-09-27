@@ -37,13 +37,12 @@
       </div>
     </div>
   </div>
-
-  <!-- Navigation précédent/suivant -->
+  <!-- Navigation précédent -->
   <button
     (click)="previousSlide()"
     (mouseenter)="pauseAutoSlide()"
     (mouseleave)="resumeAutoSlide()"
-    class="slider-nav prev"
+    class="slider-nav modern prev"
     aria-label="Slide précédent"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -51,17 +50,19 @@
     </svg>
   </button>
 
+  <!-- Navigation suivant -->
   <button
     (click)="nextSlide()"
     (mouseenter)="pauseAutoSlide()"
     (mouseleave)="resumeAutoSlide()"
-    class="slider-nav next"
+    class="slider-nav modern next"
     aria-label="Slide suivant"
   >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
     </svg>
   </button>
+
 
   <!-- Indicateurs de slide -->
   <div class="slider-indicators">
@@ -76,15 +77,22 @@
     ></button>
   </div>
 
-  <!-- Contrôles de pause/play -->
+  <!-- Bouton Pause/Play -->
   <button
-    (click)="pauseAutoSlide()"
-    (mouseenter)="pauseAutoSlide()"
+    (click)="togglePlayPause()"
     class="slider-controls"
-    aria-label="Pause"
+    aria-label="Play/Pause"
   >
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    <!-- Icône Play -->
+    <svg *ngIf="isPaused" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5v14l11-7z"></path>
+    </svg>
+
+    <!-- Icône Pause -->
+    <svg *ngIf="!isPaused" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
     </svg>
   </button>
+
+
 </section>

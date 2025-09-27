@@ -125,4 +125,14 @@ export class SliderComponent implements OnInit, OnDestroy {
   resumeAutoSlide() {
     this.startAutoSlide();
   }
+  isPaused = false;
+
+  togglePlayPause() {
+    if (this.isPaused) {
+      this.resumeAutoSlide();
+    } else {
+      this.pauseAutoSlide();
+    }
+    this.isPaused = !this.isPaused;
+  }
 }

@@ -57,7 +57,8 @@
   color: #fff;
 }
 .logo-img {
-  height: 50px;   /* ajuste selon ta navbar */
+  margin-left: 3vh;
+  height: 170px;   /* ajuste selon ta navbar */
   width: auto;    /* garde les proportions */
 }
 

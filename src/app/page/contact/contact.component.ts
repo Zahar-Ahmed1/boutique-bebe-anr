@@ -53,14 +53,14 @@ export class ContactComponent {
     {
       icon: '📧',
       title: 'Email',
-      content: 'contact@babyannr.com',
-      link: 'mailto:contact@babyannr.com'
+      content: 'contact@annrstore.com',
+      link: 'mailto:contact@annrstore.com'
     },
     {
       icon: '📞',
       title: 'Téléphone',
-      content: '+33 1 23 45 67 89',
-      link: 'tel:+33123456789'
+      content: '06 01 17 68 86',
+      link: 'tel:0601176886'
     },
     {
       icon: '📍',

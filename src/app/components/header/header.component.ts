@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {Component, OnInit, OnDestroy, HostListener} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -108,7 +108,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
           this.searchResults = results;
           this.isSearching = false;
           console.log('Résultats de recherche:', results);
-          
+
           // Rediriger vers la page des produits avec les résultats de recherche
           if (results.length > 0) {
             // Vous pouvez rediriger vers une page de résultats ou afficher les résultats ici
@@ -131,5 +131,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   addToFavorites() {
     this.favoritesCount++;
+  }
+  isScrolled = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 0; // active dès qu’on scroll
   }
 }
