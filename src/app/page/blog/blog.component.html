@@ -13,7 +13,7 @@
 </section>
 
 <!-- Section Dernier Article -->
-<section class="latest-article-section" *ngIf="latestArticle"
+<section [routerLink]="['/blog', latestArticle.id]" class="latest-article-section" *ngIf="latestArticle"
          [style.background-image]="'url(' + latestArticle.image + ')'">
   <div class="container-custom">
     <div class="section-header">
@@ -78,7 +78,7 @@
     <!-- Grille des articles (6 articles en 3 par ligne) -->
     <div class="other-articles-grid">
       <article *ngFor="let article of otherArticles" class="featured-article-card">
-        <div class="article-image-wrapper">
+        <div [routerLink]="['/blog', article.id]" class="article-image-wrapper">
           <img [src]="article.image" [alt]="article.title" class="article-image">
           <div class="article-category-badge">{{ article.category }}</div>
           <div class="article-read-time">{{ article.readTime }}</div>

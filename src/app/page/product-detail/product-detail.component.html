@@ -8,7 +8,7 @@
         <nav class="breadcrumb-nav">
           <a routerLink="/" class="breadcrumb-link">Accueil</a>
           <span class="breadcrumb-separator">></span>
-          <a routerLink="/product" class="breadcrumb-link">Produits</a>
+          <a routerLink="/products" class="breadcrumb-link">Produits</a>
           <span class="breadcrumb-separator">></span>
           <span class="breadcrumb-current">{{ product?.name }}</span>
         </nav>
@@ -44,7 +44,19 @@
                  product.badge === 'bestseller' ? 'Best-seller' : '' }}
             </span>
           </div>
+
+
+
+
+
         </div>
+        <div class="video-container" *ngIf="product && product.videos && product.videos.length > 0">
+          <video controls>
+            <source [src]="product.videos[0]" type="video/mp4">
+            Ton navigateur ne supporte pas la lecture vidéo.
+          </video>
+        </div>
+
 
         <!-- Miniatures -->
         <div class="thumbnail-gallery" *ngIf="product.images.length > 1">
@@ -77,6 +89,7 @@
             <span class="rating-text">{{ product.rating }}/5 ({{ product.reviewCount }} avis)</span>
           </div>
         </div>
+
 
         <!-- Prix -->
         <div class="product-pricing">
@@ -207,7 +220,7 @@
         <div class="features-grid">
           <div *ngFor="let feature of product.features" class="feature-card">
             <div class="feature-icon-container">
-              <svg class="feature-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="feature-icon" style="margin-top: 25px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
               </svg>
             </div>

@@ -14,13 +14,7 @@
   background: #0a0a0a;
 }
 
-.container-custom {
-  max-width: 1500px;
-  margin: 0 ;
-  padding: 1rem 2rem;
-  position: relative;
-  z-index: 1;
-}
+
 
 /* Breadcrumb Navigation */
 .breadcrumb-section {
@@ -133,6 +127,8 @@
   border-radius: 0.75rem;
   overflow: hidden;
   background: #f9fafb;
+  max-width: 800px;
+  max-height: 600px;
   border: 1px solid #e5e7eb;
   transition: all 0.3s ease;
 }
@@ -1019,6 +1015,7 @@
   border-radius: 0.75rem;
   flex-shrink: 0;
   transition: all 0.3s ease;
+
 }
 
 .feature-card:hover .feature-icon-container {
@@ -1347,3 +1344,19 @@
     padding: 0.25rem 0.5rem;
   }
 }
+
+
+.video-container {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 15px;
+  border: solid 1px var(--secondary-500);
+  border-radius: 10px;
+}
+
+.video-container video {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+

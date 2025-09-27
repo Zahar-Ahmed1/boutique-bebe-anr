@@ -96,7 +96,7 @@ export class ContactComponent {
         message += `🛍️ Aucun produit favori sélectionné.\n`;
       }
 
-      const whatsappNumber = "212706296134"; // Ton numéro WhatsApp
+      const whatsappNumber = "212601176886"; // Ton numéro WhatsApp
       const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
       // Ouvrir WhatsApp avec le message pré-rempli

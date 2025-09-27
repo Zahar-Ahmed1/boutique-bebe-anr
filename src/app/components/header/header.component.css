@@ -50,6 +50,20 @@
 .nav-links {
   display: none;
 }
+/* Image du logo */
+.logo-img {
+  height: 110px;      /* ajuste la taille du logo */
+  width: auto;       /* conserve le ratio */
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  border-radius: 12px; /* coins arrondis si tu veux */
+}
+
+/* Effet au survol */
+.logo-img:hover {
+  transform: scale(1.05); /* zoom léger */
+  filter: brightness(1.1); /* rend le logo plus lumineux */
+}
 
 @media (min-width: 768px) {
   .nav-links {

@@ -210,7 +210,7 @@
 }
 
 .badge-new {
-  background: #17661A;
+  background: #20c827;
 }
 
 .badge-sale {
@@ -351,7 +351,7 @@
 }
 
 .availability-low-stock {
-  background: rgba(245, 158, 11, 0.9);
+  background: rgba(234, 217, 14, 0.9);
 }
 
 .availability-out-of-stock {

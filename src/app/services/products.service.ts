@@ -17,6 +17,7 @@ export interface Product {
   shortDescription: string;
   image: string;
   images: string[];
+  videos?: string[]; // ✅ vidéos depuis Cloudinary
   sizes?: string[];
   colors?: string[];
   material?: string;
@@ -28,6 +29,7 @@ export interface Product {
   tags: string[];
   createdAt: Date;
   updatedAt: Date;
+
 }
 
 export interface Category {
@@ -173,6 +175,9 @@ export class ProductsService {
         images: [
           'https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
         ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
+        ],
         sizes: ['18', '19', '20', '21'],
         colors: ['Blanc', 'Marron', 'Rose'],
         material: 'Cuir véritable',
@@ -200,6 +205,9 @@ export class ProductsService {
         images: [
           'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
         ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
+        ],
         material: 'Bois massif',
         brand: 'BabyAnnr',
         ageRange: '18-36 mois',
@@ -225,6 +233,9 @@ export class ProductsService {
         image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
         images: [
           'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
         ],
         sizes: ['0-3M', '3-6M', '6-12M'],
         colors: ['Gris', 'Bleu', 'Rose', 'Blanc'],
@@ -252,6 +263,9 @@ export class ProductsService {
         images: [
           'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
         ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
+        ],
         material: 'Ingrédients bio',
         brand: 'BabyAnnr',
         ageRange: '0+ mois',
@@ -276,6 +290,9 @@ export class ProductsService {
         image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
         images: [
           'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
         ],
         sizes: ['0-3M', '3-6M', '6-9M', '9-12M'],
         colors: ['Bleu ciel', 'Rose poudré', 'Vert menthe'],
@@ -302,6 +319,9 @@ export class ProductsService {
         image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
         images: [
           'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+        ],
+        videos: [
+          'https://res.cloudinary.com/dxtlsrtoq/video/upload/v1727001234/body-bio.mp4' // ✅ vidéo Cloudinary
         ],
         sizes: ['0-3M', '3-6M', '6-9M', '9-12M'],
         colors: ['Bleu ciel', 'Rose poudré', 'Vert menthe'],

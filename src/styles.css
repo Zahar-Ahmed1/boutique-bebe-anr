@@ -115,7 +115,7 @@ main, section {
 .container-custom {
   max-width: none;
   margin: 0;
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
 }
 /* Boutons */
 .btn-primary {

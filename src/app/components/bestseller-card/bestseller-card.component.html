@@ -2,7 +2,7 @@
   <!-- Badge -->
   <div class="badge-container" *ngIf="product.badge || product.discountPercentage">
     <span *ngIf="product.badge === 'new'" class="badge badge-new">Nouveau</span>
-    <span *ngIf="product.badge === 'sale'" class="badge badge-sale">-{{ discountPercentage }}%</span>
+    <span *ngIf="product.badge === 'sale'" class="badge badge-sale">promotion</span>
     <span *ngIf="product.badge === 'trending'" class="badge badge-trending">Moins cher</span>
     <span *ngIf="product.badge === 'bestseller'" class="badge badge-bestseller">Meilleur Qualite</span>
     <span *ngIf="!product.badge && product.discountPercentage" class="badge badge-sale">-{{ discountPercentage }}%</span>
@@ -60,7 +60,7 @@
     </div>
       <p class="descr" style="margin-bottom: 3%">
         <span *ngIf="product.description" class="product-name-link">
-    {{ product.description | truncateWords:6 }}
+    {{ product.description | truncateWords:4 }}
   </span>
       </p>
 
