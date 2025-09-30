@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<main class="about-page">
+<main class="about-page" [class.loading]="!isPageLoaded()">
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container-custom">
@@ -72,8 +72,9 @@
 
       <div class="values-grid">
         <div
-          *ngFor="let value of values"
+          *ngFor="let value of values; let i = index"
           class="value-card"
+          [style]="getCardIndex(i)"
         >
           <div class="value-icon">
             <img [src]="value.icon" style="margin: 10px; width: 3rem; height: 3rem;" [alt]="value.title" />
@@ -131,8 +132,9 @@
 
       <div class="certifications-grid">
         <div
-          *ngFor="let cert of certifications"
+          *ngFor="let cert of certifications; let i = index"
           class="certification-card"
+          [style]="getCertIndex(i)"
         >
           <div class="value-icon">
             <img [src]="cert.icon" style="margin: 10px; width: 3rem; height: 3rem;"   alt=""/>

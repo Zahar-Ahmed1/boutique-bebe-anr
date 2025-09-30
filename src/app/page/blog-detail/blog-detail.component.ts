@@ -219,6 +219,145 @@ export class BlogDetailComponent implements OnInit {
       tags: ['Lecture', 'Éducation', 'Développement'],
       views: 920,
       likes: 78
+    },
+    {
+      id: 6,
+      title: 'Gérer les pleurs de bébé : guide pratique',
+      excerpt: 'Comprendre et apaiser les pleurs de votre bébé avec des techniques douces et efficaces.',
+      content: `
+        <h2 id="introduction">Introduction</h2>
+        <p>Les pleurs de bébé sont un moyen de communication naturel, mais ils peuvent être source de stress pour les parents. Comprendre les causes et savoir comment réagir peut faire toute la différence.</p>
+
+        <h2 id="section1">Comprendre les pleurs</h2>
+        <p>Les pleurs sont le principal moyen de communication de votre bébé. Ils peuvent exprimer différents besoins :</p>
+
+        <h3>Les causes courantes</h3>
+        <ul>
+          <li><strong>Faim :</strong> Le besoin le plus fréquent, surtout chez les nouveau-nés</li>
+          <li><strong>Fatigue :</strong> Votre bébé a besoin de sommeil</li>
+          <li><strong>Inconfort :</strong> Couche sale, vêtements trop serrés, température</li>
+          <li><strong>Coliques :</strong> Douleurs abdominales fréquentes chez les bébés</li>
+          <li><strong>Besoins d'attention :</strong> Votre bébé a besoin de réconfort</li>
+        </ul>
+
+        <h2 id="section2">Techniques d'apaisement</h2>
+        <p>Voici des techniques éprouvées pour calmer votre bébé :</p>
+
+        <h3>La méthode des 5 S</h3>
+        <ol>
+          <li><strong>Swaddling (emmaillotage) :</strong> Envelopper bébé dans une couverture</li>
+          <li><strong>Side/Stomach position :</strong> Position sur le côté ou le ventre</li>
+          <li><strong>Shushing :</strong> Faire des "chut" rythmés</li>
+          <li><strong>Swinging :</strong> Balancement doux</li>
+          <li><strong>Sucking :</strong> Tétine ou allaitement</li>
+        </ol>
+
+        <h3>Autres techniques</h3>
+        <ul>
+          <li>Promenade en poussette ou en voiture</li>
+          <li>Musique douce ou bruits blancs</li>
+          <li>Massage bébé</li>
+          <li>Contact peau à peau</li>
+        </ul>
+
+        <h2 id="section3">Quand consulter</h2>
+        <p>Consultez un professionnel de santé si :</p>
+        <ul>
+          <li>Les pleurs durent plus de 3 heures par jour</li>
+          <li>Votre bébé a de la fièvre</li>
+          <li>Les pleurs sont accompagnés d'autres symptômes</li>
+          <li>Vous vous sentez dépassé(e)</li>
+        </ul>
+
+        <h2 id="section4">Conclusion</h2>
+        <p>Gérer les pleurs de bébé demande patience et compréhension. N'oubliez pas de prendre soin de vous aussi, car un parent reposé est plus à même de réconforter son enfant.</p>
+      `,
+      image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop',
+      category: 'Conseils',
+      date: '3 Jan 2024',
+      author: 'Dr. Claire Moreau',
+      readTime: '9 min',
+      tags: ['Pleurs', 'Apaisement', 'Conseils'],
+      views: 1100,
+      likes: 95
+    },
+    {
+      id: 7,
+      title: 'Le sommeil de bébé : rythmes et bonnes habitudes',
+      excerpt: 'Tout savoir sur les cycles de sommeil de bébé et comment instaurer de bonnes habitudes.',
+      content: `
+        <h2 id="introduction">Introduction</h2>
+        <p>Le sommeil est essentiel au développement de votre bébé. Comprendre ses rythmes naturels vous aide à instaurer de bonnes habitudes dès le plus jeune âge.</p>
+
+        <h2 id="section1">Les cycles de sommeil</h2>
+        <p>Les bébés ont des cycles de sommeil différents des adultes. Leur sommeil évolue rapidement au cours des premiers mois.</p>
+
+        <h2 id="section2">Conseils pratiques</h2>
+        <p>Voici des conseils pour favoriser un bon sommeil :</p>
+
+        <h2 id="section3">Conclusion</h2>
+        <p>Un bon sommeil est la base d'un développement harmonieux.</p>
+      `,
+      image: 'https://images.unsplash.com/photo-1544376664-80b17f09d399?w=800&h=600&fit=crop',
+      category: 'Santé',
+      date: '1 Jan 2024',
+      author: 'Dr. Pierre Durand',
+      readTime: '8 min',
+      tags: ['Sommeil', 'Rythmes', 'Habitudes'],
+      views: 1350,
+      likes: 102
+    },
+    {
+      id: 8,
+      title: 'Activités créatives pour stimuler l\'imagination',
+      excerpt: 'Des idées d\'activités manuelles et créatives adaptées aux différents âges de votre enfant.',
+      content: `
+        <h2 id="introduction">Introduction</h2>
+        <p>La créativité est une compétence essentielle qui se développe dès le plus jeune âge. Voici des activités pour stimuler l'imagination de votre enfant.</p>
+
+        <h2 id="section1">Activités par âge</h2>
+        <p>Chaque âge a ses activités créatives adaptées.</p>
+
+        <h2 id="section2">Matériel nécessaire</h2>
+        <p>Des matériaux simples suffisent pour des activités créatives riches.</p>
+
+        <h2 id="section3">Conclusion</h2>
+        <p>La créativité s'épanouit dans un environnement encourageant et bienveillant.</p>
+      `,
+      image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop',
+      category: 'Éducation',
+      date: '28 Déc 2023',
+      author: 'Camille Leroy',
+      readTime: '6 min',
+      tags: ['Créativité', 'Activités', 'Stimulation'],
+      views: 680,
+      likes: 56
+    },
+    {
+      id: 9,
+      title: 'Organiser une fête d\'anniversaire mémorable',
+      excerpt: 'Conseils et idées pour organiser une fête d\'anniversaire inoubliable pour votre enfant.',
+      content: `
+        <h2 id="introduction">Introduction</h2>
+        <p>L'anniversaire de votre enfant est un moment spécial à célébrer. Voici comment organiser une fête mémorable adaptée à son âge.</p>
+
+        <h2 id="section1">Planification</h2>
+        <p>Une bonne planification est la clé du succès d'une fête d'anniversaire.</p>
+
+        <h2 id="section2">Idées d'activités</h2>
+        <p>Des activités adaptées à l'âge de votre enfant pour une fête réussie.</p>
+
+        <h2 id="section3">Conclusion</h2>
+        <p>L'important est de créer des souvenirs heureux pour votre enfant.</p>
+      `,
+      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&h=600&fit=crop',
+      category: 'Lifestyle',
+      date: '25 Déc 2023',
+      author: 'Julie Moreau',
+      readTime: '5 min',
+      tags: ['Anniversaire', 'Fête', 'Organisation'],
+      views: 890,
+      likes: 73
     }
   ];
 

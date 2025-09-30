@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="categories-page">
+<div class="categories-page" [class.loading]="!isPageLoaded()">
   <div class="container-custom">
     <!-- En-tête de la page -->
     <div class="page-header">
@@ -14,10 +14,11 @@
       <h2 class="section-title">Catégories <span >Populaires</span></h2>
       <div class="featured-categories-grid">
         <div
-          *ngFor="let category of featuredCategories"
+          *ngFor="let category of featuredCategories; let i = index"
           class="featured-category-card"
           [routerLink]="['/products']"
           [queryParams]="{category: category.id}"
+          [style]="getCardIndex(i)"
         >
           <div class="featured-category-image-container">
             <img

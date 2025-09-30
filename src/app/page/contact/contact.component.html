@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="contact-page">
+<div class="contact-page" [class.loading]="!isPageLoaded()">
   <div class="container-custom">
     <!-- En-tête de la page -->
     <div class="page-header">
@@ -18,7 +18,7 @@
 
         <form (ngSubmit)="onSubmit()" class="contact-form">
           <div class="form-row">
-            <div class="form-group">
+            <div class="form-group" [style]="getGroupIndex(0)">
               <label for="name" class="form-label">
                 Nom complet *
               </label>
@@ -33,7 +33,7 @@
               >
             </div>
 
-            <div class="form-group">
+            <div class="form-group" [style]="getGroupIndex(1)">
               <label for="email" class="form-label">
                 Email *
               </label>
@@ -51,7 +51,7 @@
 
           <!-- Nouvelle ligne avec Ville et Téléphone -->
           <div class="form-row">
-            <div class="form-group">
+            <div class="form-group" [style]="getGroupIndex(2)">
               <label for="ville" class="form-label">
                 Ville *
               </label>
@@ -66,7 +66,7 @@
               >
             </div>
 
-            <div class="form-group">
+            <div class="form-group" [style]="getGroupIndex(3)">
               <label for="telephone" class="form-label">
                 Téléphone *
               </label>
@@ -82,7 +82,7 @@
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group" [style]="getGroupIndex(4)">
             <label for="message" class="form-label">
               Message *
             </label>
@@ -134,8 +134,9 @@
 
         <div class="contact-info-list">
           <div
-            *ngFor="let info of contactInfo"
+            *ngFor="let info of contactInfo; let i = index"
             class="contact-info-item"
+            [style]="getItemIndex(i)"
           >
             <div class="contact-info-icon">{{ info.icon }}</div>
             <div class="contact-info-content">
@@ -192,7 +193,7 @@
             Questions fréquentes
           </h3>
           <div class="faq-list">
-            <details class="faq-item">
+            <details class="faq-item" [style]="getFaqIndex(0)">
               <summary class="faq-question">
                 <span class="faq-question-text">Comment retourner un produit ?</span>
                 <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -204,7 +205,7 @@
               </div>
             </details>
 
-            <details class="faq-item">
+            <details class="faq-item" [style]="getFaqIndex(1)">
               <summary class="faq-question">
                 <span class="faq-question-text">Quels sont les délais de livraison ?</span>
                 <svg class="faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">

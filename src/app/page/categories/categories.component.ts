@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -22,6 +22,15 @@ interface Category {
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent {
+  isPageLoaded = signal(false);
+
+  constructor() {
+    // Déclencher l'animation de chargement de la page
+    setTimeout(() => {
+      this.isPageLoaded.set(true);
+    }, 100);
+  }
+
   categories: Category[] = [
     {
       id: 'clothes-0-24',
@@ -81,5 +90,10 @@ export class CategoriesComponent {
 
   get regularCategories(): Category[] {
     return this.categories.filter(cat => !cat.featured);
+  }
+
+  // Méthodes pour les animations
+  getCardIndex(index: number): string {
+    return `--card-index: ${index}`;
   }
 }

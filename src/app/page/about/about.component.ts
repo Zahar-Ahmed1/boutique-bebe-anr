@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
@@ -40,6 +40,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('timelineSection') timelineSection!: ElementRef;
 
   private observer!: IntersectionObserver;
+  isPageLoaded = signal(false);
   teamMembers: TeamMember[] = [
     {
       name: 'Marie Dubois',
@@ -172,7 +173,10 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   ngOnInit() {
-    // Initialisation
+    // Déclencher l'animation de chargement de la page
+    setTimeout(() => {
+      this.isPageLoaded.set(true);
+    }, 100);
   }
 
   ngAfterViewInit() {
@@ -213,5 +217,14 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.timelineSection?.nativeElement) {
       this.observer.observe(this.timelineSection.nativeElement);
     }
+  }
+
+  // Méthodes pour les animations
+  getCardIndex(index: number): string {
+    return `--card-index: ${index}`;
+  }
+
+  getCertIndex(index: number): string {
+    return `--cert-index: ${index}`;
   }
 }
