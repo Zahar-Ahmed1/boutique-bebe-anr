@@ -40,15 +40,10 @@ export class ContactComponent {
     longitude: -7.574079,
     address: 'Casablanca, Maroc'
   };
-
-
-
-
-
   constructor(private favoritesService: FavoritesService, private sanitizer: DomSanitizer) {
     const embedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.3190545074175!2d-7.574079!3d33.557209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd0c56b7d8e5%3A0x123456789abcdef!2sCasablanca%2C%20Maroc!5e0!3m2!1sfr!2sma!4v1727160000000!5m2!1sfr!2sma";
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
-    
+
     // Déclencher l'animation de chargement de la page
     setTimeout(() => {
       this.isPageLoaded.set(true);
@@ -60,7 +55,7 @@ export class ContactComponent {
       icon: '📧',
       title: 'Email',
       content: 'contact@annrstore.com',
-      link: 'mailto:contact@annrstore.com'
+      link: 'contact@annrstore.com'
     },
     {
       icon: '📞',
